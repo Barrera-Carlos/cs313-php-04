@@ -21,15 +21,21 @@
     $dbopts = parse_url($dbURL);
 
 
-    $dbHost = $dbopts["host"];
-    $dbPort = $dbopts["port"];
-    $dbUser = $dbopts["user"];
-    $dbPassword = $dbopts["pass"];
-    $dbName = ltrim($dbopts["path"],'/');
+    try{
+        $dbHost = $dbopts["host"];
+        $dbPort = $dbopts["port"];
+        $dbUser = $dbopts["user"];
+        $dbPassword = $dbopts["pass"];
+        $dbName = ltrim($dbopts["path"],'/');
 
-    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+        $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+    }
+    catch (PODException $ex){
+        echo 'Error!: ' . $ex->getMessage();
+        die();
+    }
 
-    echo 'im in pain, because my existence is meaningless. I also have a hard time spelling';
+    echo "I also have a hard time spelling";
     /*foreach ($db->query('SELECT * FROM question_answers') as $row){
         echo 'question id:'. $row['question_id'];
         echo 'answer id;'. $row['answer_id'];
