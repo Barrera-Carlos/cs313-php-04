@@ -8,13 +8,20 @@
 $dbURL = getenv('DATABASE_URL');
 $dbopts = parse_url($dbURL);
 
-$dbHost = $dbopts["host"];
-$dbPort = $dbopts["port"];
-$dbUser = $dbopts["user"];
-$dbPassword = $dbopts["pass"];
-$dbName = ltrim($dbopts["path"],'/');
 
-$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+try{
+    $dbHost = $dbopts["host"];
+    $dbPort = $dbopts["port"];
+    $dbUser = $dbopts["user"];
+    $dbPassword = $dbopts["pass"];
+    $dbName = ltrim($dbopts["path"],'/');
+
+    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+}
+catch (PODException $ex){
+    echo 'Error!: ' . $ex->getMessage();
+    die();
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,5 +31,13 @@ $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass
 </head>
 
 <body>
+<?php
+    foreach ($db->query('SELECT * FROM question_answers') as $row){
+        echo 'question id:'. $row['question_id'];
+        echo 'answer id;'. $row['answer_id'];
+        echo '<br/>';
+    }
+?>
+
 </body>
 </html>
