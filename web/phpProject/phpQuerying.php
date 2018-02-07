@@ -36,11 +36,12 @@
     }
 
     echo "I also have a hard time spelling";
-    /*foreach ($db->query('SELECT * FROM question_answers') as $row){
-        echo 'question id:'. $row['question_id'];
-        echo 'answer id;'. $row['answer_id'];
+    foreach ($db->query('SELECT * FROM public.user') as $row){
+        echo 'id:'. $row['id'];
+        echo 'username:'. $row['username'];
+        echo 'display name;'. $row['display_name'];
         echo '<br/>';
-    }*/
+    }
 ?>
 
 </body>
