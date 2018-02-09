@@ -62,9 +62,9 @@ else{
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sqlSubjectId) as $row) {
-       $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =" .$row["subject_id"];
+       $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =".$row["subject_id"];
         $column = $db->query($sqlSubject);
-        echo "<input type='button' value=".(string)$column."><br/>";
+        echo "<input type='button' value=".(string)$column["subject_name"]."><br/>";
     }
     echo "</from>";
 }
