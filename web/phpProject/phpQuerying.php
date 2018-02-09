@@ -64,7 +64,8 @@ else{
     foreach ($db->query($sqlSubjectId) as $row) {
        $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =".$row["subject_id"];
         $column = $db->query($sqlSubject);
-        echo "<input type='button' value=".$column["subject_name"]."><br/>";
+        #echo "<input type='button' value=".$column["subject_name"]."><br/>";
+        echo "<input type='button' value='1'><br/>";
     }
     echo "</from>";
 }
