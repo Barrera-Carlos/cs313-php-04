@@ -63,7 +63,8 @@ else{
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sqlSubjectId) as $row) {
        $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =" .$row["subject_id"];
-        echo "<input type='button' value=".$sqlSubject."><br/>";
+        $column = $sqlSubject->fetch_assoc();
+        echo "<input type='button' value=".$column["subject_name"]."><br/>";
 
     }
 }
