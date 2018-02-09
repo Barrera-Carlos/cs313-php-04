@@ -60,7 +60,8 @@ if($displayName == 'empy'){
 }
 else{
     echo $displayName;
-    $userSubject = $db->query('SELECT subject_id FROM public.usr_subjects WHERE user_id ='.$_SESSION["userId"]);
+    $sql = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
+    $userSubject = $db->query($sql);
     echo (string)$userSubject;
 }
 ?>
