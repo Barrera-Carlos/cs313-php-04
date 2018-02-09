@@ -59,11 +59,14 @@ if($displayName == 'empy'){
     echo 'Your not a valid user';
 }
 else{
-    echo $displayName;
+    echo "<form action=\"QuestionSelect.php\" method='post'>";
     $sql = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sql) as $row) {
         echo 'id:' . $row['subject_id'];
         echo '<br/>';
+
+        echo "<input type='button' value=\'".$row["subject_id"]."\''>";
+
     }
 }
 ?>
