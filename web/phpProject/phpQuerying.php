@@ -5,6 +5,25 @@
  * Date: 2/7/2018
  * Time: 2:59 PM
  */
+session_start();
+
+$dbURL = getenv('DATABASE_URL');
+$dbopts = parse_url($dbURL);
+
+
+try{
+    $dbHost = $dbopts["host"];
+    $dbPort = $dbopts["port"];
+    $dbUser = $dbopts["user"];
+    $dbPassword = $dbopts["pass"];
+    $dbName = ltrim($dbopts["path"],'/');
+
+    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+}
+catch (PODException $ex){
+    echo 'Error!: ' . $ex->getMessage();
+    die();
+}
 
 ?>
 
@@ -16,32 +35,32 @@
 
 <body>
 <?php
-
-    $dbURL = getenv('DATABASE_URL');
-    $dbopts = parse_url($dbURL);
-
-
-    try{
-        $dbHost = $dbopts["host"];
-        $dbPort = $dbopts["port"];
-        $dbUser = $dbopts["user"];
-        $dbPassword = $dbopts["pass"];
-        $dbName = ltrim($dbopts["path"],'/');
-
-        $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-    }
-    catch (PODException $ex){
-        echo 'Error!: ' . $ex->getMessage();
-        die();
-    }
-
-    echo "I also have a hard time spelling";
-    foreach ($db->query('SELECT * FROM public.user') as $row){
+    /*foreach ($db->query('SELECT * FROM public.user') as $row){
         echo 'id:'. $row['id'];
         echo 'username:'. $row['username'];
         echo 'display name;'. $row['display_name'];
         echo '<br/>';
+    }*/
+
+    $username = $_POST["username"];
+    $logInPsw = $_POST["psw"];
+    $displayName = 'empy';
+
+foreach ($db->query('SELECT * FROM public.user') as $row){
+    if($row['username'] == $username and  $row['password'] == $logInPsw){
+        $_SESSION["userId"] = $row['id'];
+        $_SESSION["username"] = $row['username'];
+        $_SESSION["displayname"] = $row['display_name'];
+        $displayName = $row['display_name'];
     }
+}
+
+if($displayName == 'empy'){
+    echo 'Your not a valid user';
+}
+else{
+    echo $username.'<br>';
+}
 ?>
 
 </body>
