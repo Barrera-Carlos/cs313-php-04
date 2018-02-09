@@ -60,12 +60,10 @@ if($displayName == 'empy'){
 }
 else{
     echo "<form action=\"QuestionSelect.php\" method='post'>";
-    $sql = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
-    foreach ($db->query($sql) as $row) {
-        echo 'id:' . $row['subject_id'];
-        echo '<br/>';
-
-        echo "<input type='button' value=".$row["subject_id"].">";
+    $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
+    foreach ($db->query($sqlSubjectId) as $row) {
+       $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =" .$row["subject_id"];
+        echo "<input type='button' value=".$sqlSubject."><br/>";
 
     }
 }
