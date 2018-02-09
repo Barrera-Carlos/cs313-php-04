@@ -59,7 +59,9 @@ if($displayName == 'empy'){
     echo 'Your not a valid user';
 }
 else{
-    echo $username.'<br>';
+    echo $displayName;
+    $userSubject = $db->query('SELECT subject_id FROM public.usr_subjects WHERE user_id ='.$_SESSION["userId"]);
+    echo (string)$userSubject;
 }
 ?>
 
