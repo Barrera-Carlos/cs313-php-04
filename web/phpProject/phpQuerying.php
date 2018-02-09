@@ -65,7 +65,7 @@ else{
         echo 'id:' . $row['subject_id'];
         echo '<br/>';
 
-        echo "<input type='button' value=\'".$row["subject_id"]."\''>";
+        echo "<input type='button' value=".$row["subject_id"].">";
 
     }
 }
