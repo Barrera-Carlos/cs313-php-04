@@ -35,7 +35,7 @@ catch (PODException $ex){
 </head>
 <body>
 <?php
-    #echo "<form action=\"quiz.php\" method='post'>";
+    echo "<form action=\"quiz.php\" method='post'>";
     foreach ($_POST['subject'] as $subject){
         foreach ($db->query('SELECT * FROM public.subject') as $column){
             if($subject == $column['subject_name']){
@@ -44,12 +44,13 @@ catch (PODException $ex){
                     $bundle = "SELECT bundle_name FROM public.bundle_name WHERE id =".$row[0];
                     foreach ($db->query($bundle) as $name){
                         echo $name[0];
+                        echo "<input value=".$name[0]."><br/>";
                     }
                 }
             }
         }
     }
-    #echo "</form>"
+    echo "</form>"
 ?>
 </form>
 </body>
