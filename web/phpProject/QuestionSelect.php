@@ -39,7 +39,6 @@ catch (PODException $ex){
     foreach ($_POST['subject'] as $subject){
         foreach ($db->query('SELECT * FROM public.subject') as $column){
             if($subject == $column['subject_name']){
-                # a merege should be added to recive all of the id
                 $select = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id =".$column['id'] ;
                 foreach ($db->query($select) as $row){
                     $bundle = "SELECT bundle_name FROM public.bundle_name WHERE id =".$row[0];
