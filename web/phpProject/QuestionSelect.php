@@ -43,7 +43,6 @@ catch (PODException $ex){
                 foreach ($db->query($select) as $row){
                     $bundle = "SELECT bundle_name FROM public.bundle_name WHERE id =".$row[0];
                     foreach ($db->query($bundle) as $name){
-                        echo $name[0];
                         echo "<input type='submit' value=".$name[0]."><br/>";
                     }
                 }
