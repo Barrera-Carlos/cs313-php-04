@@ -43,16 +43,9 @@ catch (PODException $ex){
                 $select = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id =".$column['id'] ;
                 foreach ($db->query($select) as $row){
                     $bundle = "SELECT bundle_name FROM public.bundle_name WHERE id =".$row[0];
-                    $bundleName = $db->query($bundle);
-                    if($bundleName->num_rows > 0){
-                        echo 'hi';
-                        while ($name = $bundleName->fetch_assoc()){
-                            echo $name[0];
-                            echo "hwlp";
-                        }
+                    foreach ($db->query($bundle) as $name){
+                        echo $name[0];
                     }
-                    else
-                        echo "no";
                 }
             }
         }
