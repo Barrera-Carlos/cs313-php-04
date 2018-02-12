@@ -44,13 +44,15 @@ catch (PODException $ex){
                 foreach ($db->query($select) as $row){
                     $bundle = "SELECT bundle_name FROM public.bundle_name WHERE id =".$row[0];
                     $bundleName = $db->query($bundle);
-                    if($bundleName->num_rows>0){
+                    if($bundleName->num_rows > 0){
                         echo 'hi';
                         while ($name = $bundleName->fetch_assoc()){
                             echo $name[0];
                             echo "hwlp";
                         }
                     }
+                    else
+                        echo "no";
                 }
             }
         }
