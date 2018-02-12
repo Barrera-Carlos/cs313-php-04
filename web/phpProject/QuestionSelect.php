@@ -42,7 +42,8 @@ catch (PODException $ex){
                 # a merege should be added to recive all of the id
                 $select = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id =".$column['id'] ;
                 foreach ($db->query($select) as $row){
-                    echo $row['bundle_id'];
+                    echo $row;
+                    #$bundle = "SELECT bundle_name FROM public.bundle_name WHERE id =".$row['bundle_id'];
                 }
             }
         }
