@@ -48,6 +48,7 @@ catch (PODException $ex){
                         echo 'hi';
                         while ($name = $bundleName->fetch_assoc()){
                             echo $name[0];
+                            echo "hwlp";
                         }
                     }
                 }
