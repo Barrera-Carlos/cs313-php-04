@@ -47,7 +47,7 @@ catch (PODException $ex){
                     if($bundleName->num_rows>0){
                         echo 'hi';
                         while ($name = $bundleName->fetch_assoc()){
-                            echo $name["bundle_name"];
+                            echo $name[0];
                         }
                     }
                 }
