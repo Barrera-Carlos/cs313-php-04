@@ -35,7 +35,7 @@ catch (PODException $ex){
 </head>
 <body>
 <?php
-    echo "<form action=\"quiz.php\" method='post'>";
+    #echo "<form action=\"quiz.php\" method='post'>";
     foreach ($_POST['subject'] as $subject){
         foreach ($db->query('SELECT * FROM public.subject') as $column){
             if($subject == $column['subject_name']){
@@ -47,7 +47,7 @@ catch (PODException $ex){
             }
         }
     }
-    echo "</form>"
+    #echo "</form>"
 ?>
 </form>
 </body>
