@@ -64,7 +64,7 @@ else{
     foreach ($db->query($sqlSubjectId) as $row) {
        $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =".$row["subject_id"];
        foreach ($db->query($sqlSubject) as $column){
-            echo "<input type='submit' value=".$column["subject_name"]." name=".$row["subject_id"]."><br/>";
+            echo "<input type='submit' value=".$column["subject_name"]." name='subject[]'><br/>";
         }
     }
     echo "</from>";
