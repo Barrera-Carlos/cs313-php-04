@@ -44,8 +44,8 @@ catch (PODException $ex){
             width: 100%;
             color: black;
         }
-        .row:nth-child(odd){
-            background-color: crimson;
+        input[type=submit]:nth-child(odd){
+            background-color: cornflowerblue;
         }
         .col-sm-12{
             padding-bottom: 20px;
