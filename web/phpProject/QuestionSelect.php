@@ -44,7 +44,7 @@ catch (PODException $ex){
             width: 100%;
             color: black;
         }
-        
+
         .col-sm-12{
             padding-bottom: 20px;
         }
