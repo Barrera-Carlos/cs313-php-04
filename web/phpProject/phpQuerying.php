@@ -50,6 +50,12 @@ catch (PODException $ex){
 
 <body>
 <?php
+    echo "<div class=\"container\">";
+    echo "<form action=\"QuestionSelect.php\" method='post'>";
+    echo "<div class=\"row\">";
+    echo "<div class=\"col-sm-12\"><input type='text'></div>";
+    echo "</div>";
+    echo "</form></div>";
     /*foreach ($db->query('SELECT * FROM public.user') as $row){
         echo 'id:'. $row['id'];
         echo 'username:'. $row['username'];
