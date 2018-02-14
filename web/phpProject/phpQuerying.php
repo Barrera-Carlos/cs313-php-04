@@ -39,7 +39,7 @@ catch (PODException $ex){
             margin-top: 20%;
         }
         input[type=submit]{
-            border-radius: 12%;
+            border-radius: 20%;
             width: 100%;
         }
         .col-sm-4{
