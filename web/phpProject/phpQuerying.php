@@ -81,9 +81,7 @@ else{
        $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =".$row["subject_id"];
        foreach ($db->query($sqlSubject) as $column){
            echo "<div class=\"row\">";
-           echo "<div class=\"col-sm-4\"></div>";
-           echo "<div class=\"col-sm-4\"><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
-           echo "<div class=\"col-sm-4\"></div>";
+           echo "<div class=\"col-sm-12\"><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
            echo "</div>";
         }
     }
