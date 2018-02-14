@@ -35,14 +35,14 @@ catch (PODException $ex){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<title>Scripture List</title>
     <style>
-        .container{
+        #displayContainer{
             margin-top: 20%;
         }
         input[type=submit]{
             border-radius: 20%;
             width: 100%;
         }
-        .col-sm-12{
+        #displayRow{
             padding-bottom: 20px;
         }
     </style>
@@ -80,7 +80,7 @@ if($displayName == 'empy'){
     echo 'Your not a valid user';
 }
 else{
-    echo "<div class=\"container\">";
+    echo "<div class=\"container\" id='displayContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     /*echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\"><input type='text'></div>";
@@ -90,7 +90,7 @@ else{
        $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =".$row["subject_id"];
        foreach ($db->query($sqlSubject) as $column){
            echo "<div class=\"row\">";
-           echo "<div class=\"col-sm-12\"><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
+           echo "<div class=\"col-sm-12\" id='displayRow'><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
            echo "</div>";
         }
     }
