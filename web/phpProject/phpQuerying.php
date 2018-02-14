@@ -62,7 +62,7 @@ if($displayName == 'empy'){
     echo 'Your not a valid user';
 }
 else{
-    echo "<div class=\"container\"";
+    echo "<div class=\"container\">";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sqlSubjectId) as $row) {
