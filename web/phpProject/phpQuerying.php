@@ -38,6 +38,9 @@ catch (PODException $ex){
         .container{
             margin-top: 20%;
         }
+        input[type=submit]{
+            border-radius: 12%;
+        }
     </style>
 </head>
 
