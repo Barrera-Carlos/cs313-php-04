@@ -42,7 +42,7 @@ catch (PODException $ex){
             border-radius: 20%;
             width: 100%;
         }
-        .col-sm-4{
+        .col-sm-12{
             padding-bottom: 20px;
         }
     </style>

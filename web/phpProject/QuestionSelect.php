@@ -43,6 +43,9 @@ catch (PODException $ex){
             border-radius: 12%;
             width: 100%;
         }
+        .col-sm-12{
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 <body>
