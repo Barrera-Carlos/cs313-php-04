@@ -38,7 +38,7 @@ catch (PODException $ex){
 </head>
 <body>
 <?php
-    echo "<div class=\"container\"";
+    echo "<div class=\"container\">";
     echo "<form action=\"quiz.php\" method='post'>";
     foreach ($_POST['subject'] as $subject){
         foreach ($db->query('SELECT * FROM public.subject') as $column){
