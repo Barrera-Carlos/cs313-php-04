@@ -58,7 +58,7 @@ catch (PODException $ex){
                     foreach ($db->query($bundle) as $name){
                         echo "<div class=\"row\">";
                         echo "<div class=\"col-sm-4\"></div>";
-                        echo "<div class=\"col-sm-4\"><input type='submit' value='".$name[0]."'><br/></div>";
+                        echo "<div class=\"col-sm-4\"><input type='submit' value='".$name[0]."'></div><br/>";
                         echo "<div class=\"col-md-4\"></div>";
                         echo "</div>";
                     }
