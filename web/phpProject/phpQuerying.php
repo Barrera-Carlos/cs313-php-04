@@ -39,6 +39,7 @@ catch (PODException $ex){
             margin-top: 20%;
         }
         input[type=submit]{
+            padding-bottom: 10px;
             border-radius: 12%;
             width: 100%;
         }
@@ -82,7 +83,6 @@ else{
            echo "<div class=\"col-sm-4\"><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
            echo "<div class=\"col-md-4\"></div>";
            echo "</div>";
-           #echo"<input type='submit' value=".$column["subject_name"]." name='subject[]'><br/>";
         }
     }
     echo "</from>";
