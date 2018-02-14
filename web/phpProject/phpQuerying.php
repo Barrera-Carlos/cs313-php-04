@@ -59,15 +59,21 @@ if($displayName == 'empy'){
     echo 'Your not a valid user';
 }
 else{
+    echo "<div class=\"container\"";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sqlSubjectId) as $row) {
        $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =".$row["subject_id"];
        foreach ($db->query($sqlSubject) as $column){
-            echo "<input type='submit' value=".$column["subject_name"]." name='subject[]'><br/>";
+           echo "<div class=\"row\">";
+           echo "<div class=\"col-sm-4\"></div>";
+           echo "<div class=\"col-sm-4\"><br/><input type='submit' value=".$column["subject_name"]." name='subject[]'><br/></div>";
+           echo "<div class=\"col-md-4\"></div>";
+           echo "</div>";
         }
     }
     echo "</from>";
+    echo "</div>";
 }
 ?>
 

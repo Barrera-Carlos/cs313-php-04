@@ -31,10 +31,14 @@ catch (PODException $ex){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Title</title>
 </head>
 <body>
 <?php
+    echo "<div class=\"container\"";
     echo "<form action=\"quiz.php\" method='post'>";
     foreach ($_POST['subject'] as $subject){
         foreach ($db->query('SELECT * FROM public.subject') as $column){
@@ -43,13 +47,18 @@ catch (PODException $ex){
                 foreach ($db->query($select) as $row){
                     $bundle = "SELECT bundle_name FROM public.bundle_name WHERE id =".$row[0];
                     foreach ($db->query($bundle) as $name){
-                        echo "<input type='submit' value='".$name[0]."'><br/>";
+                        echo "<div class=\"row\">";
+                        echo "<div class=\"col-sm-4\"></div>";
+                        echo "<div class=\"col-sm-4\"><input type='submit' value='".$name[0]."'><br/></div>";
+                        echo "<div class=\"col-md-4\"></div>";
+                        echo "</div>";
                     }
                 }
             }
         }
     }
-    echo "</form>"
+    echo "</form>";
+echo "</div>";
 ?>
 </form>
 </body>
