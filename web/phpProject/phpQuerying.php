@@ -43,7 +43,7 @@ catch (PODException $ex){
             width: 100%;
         }
         .col-sm-4{
-            padding-bottom: 10%;
+            padding-bottom: 20px;
         }
     </style>
 </head>
