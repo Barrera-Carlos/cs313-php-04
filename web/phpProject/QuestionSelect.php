@@ -42,6 +42,10 @@ catch (PODException $ex){
         input[type=submit]{
             border-radius: 12%;
             width: 100%;
+            color: black;
+        }
+        .row:nth-child(odd){
+            background-color: crimson;
         }
         .col-sm-12{
             padding-bottom: 20px;
