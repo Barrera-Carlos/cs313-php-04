@@ -40,6 +40,7 @@ catch (PODException $ex){
         }
         input[type=submit]{
             border-radius: 12%;
+            width: 100%;
         }
     </style>
 </head>
