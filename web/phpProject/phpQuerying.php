@@ -83,21 +83,11 @@ catch (PODException $ex){
 
 <body>
 <?php
-    echo "<div class=\"container\" id='inputContainer'>";
+    /*echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text'><button style='text-align: center'>Add Subject</button></div>";
-    echo "</div>";
-    /*echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" ><button style='text-align: center'>Add Subject</button></div>";
-    echo "</div>";
-    echo "</form></div>";*/
-    /*foreach ($db->query('SELECT * FROM public.user') as $row){
-        echo 'id:'. $row['id'];
-        echo 'username:'. $row['username'];
-        echo 'display name;'. $row['display_name'];
-        echo '<br/>';
-    }*/
+    echo "</div>";*/
 
     $username = $_POST["username"];
     $logInPsw = $_POST["psw"];
@@ -118,9 +108,9 @@ if($displayName == 'empy'){
 else{
     echo "<div class=\"container\" id='displayContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
-    /*echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\"><input type='text'></div>";
-    echo "</div>";*/
+    echo "<div class=\"row\">";
+    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text'><button style='text-align: center'>Add Subject</button></div>";
+    echo "</div>";
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sqlSubjectId) as $row) {
        $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =".$row["subject_id"];
