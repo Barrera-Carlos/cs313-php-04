@@ -52,7 +52,7 @@ catch (PODException $ex){
         input[type=submit]:hover{
             background-color: #003d99;
         }
-        #inputContainer{
+        #inputRow{
            padding-top: 100px;
             background-color: deepskyblue;
         }
@@ -84,8 +84,8 @@ catch (PODException $ex){
 <?php
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
-    echo "<div class=\"row\" id='inputRow'>";
-    echo "<div class=\"col-sm-12\" ><input type='text'><button style='text-align: center'>Add Subject</button></div>";
+    echo "<div class=\"row\">";
+    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text'><button style='text-align: center'>Add Subject</button></div>";
     echo "</div>";
     /*echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" ><button style='text-align: center'>Add Subject</button></div>";
