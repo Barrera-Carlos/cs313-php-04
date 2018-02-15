@@ -54,10 +54,10 @@ catch (PODException $ex){
         }
         #inputRow{
            padding-top: 100px;
+            background-color: deepskyblue;
         }
         input[type=text]{
             width: 75%;
-            background-color: deepskyblue;
         }
         button{
             border: none;
