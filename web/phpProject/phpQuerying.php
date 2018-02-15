@@ -35,9 +35,9 @@ catch (PODException $ex){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<title>Scripture List</title>
     <style>
-        #displayContainer{
+       /*displayContainer{
             margin-top: 20%;
-        }
+        }*/
         /*#displayRow{
             padding-bottom: 20px;
         }*/
