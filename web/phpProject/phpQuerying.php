@@ -43,7 +43,7 @@ catch (PODException $ex){
             width: 100%;
         }
         input[type=text]{
-            padding-top: 20px;
+            padding-top: 100px;
             width: 100%;
         }
         #displayRow{
