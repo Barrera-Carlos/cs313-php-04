@@ -42,9 +42,15 @@ catch (PODException $ex){
             border-radius: 20%;
             width: 100%;
         }
+        input[type=text]{
+            padding-top: 20px;
+            width: 100%;
+        }
         #displayRow{
             padding-bottom: 20px;
         }
+
+
     </style>
 </head>
 
@@ -53,7 +59,7 @@ catch (PODException $ex){
     echo "<div class=\"container\">";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\"><input type='text'></div>";
+    echo "<div class=\"col-sm-12\" ><input type='text'></div>";
     echo "</div>";
     echo "</form></div>";
     /*foreach ($db->query('SELECT * FROM public.user') as $row){
