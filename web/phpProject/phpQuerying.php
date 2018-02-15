@@ -65,6 +65,9 @@ catch (PODException $ex){
     echo "<div class=\"row\" id='inputRow'>";
     echo "<div class=\"col-sm-12\" ><input type='text'></div>";
     echo "</div>";
+    echo "<div class=\"row\">";
+    echo "<div class=\"col-sm-12\" ><button>Add Subject</button></div>";
+    echo "</div>";
     echo "</form></div>";
     /*foreach ($db->query('SELECT * FROM public.user') as $row){
         echo 'id:'. $row['id'];
