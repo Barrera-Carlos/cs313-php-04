@@ -38,13 +38,13 @@ catch (PODException $ex){
         #displayContainer{
             margin-top: 20%;
         }
-        #displayRow{
+        /*#displayRow{
             padding-bottom: 20px;
-        }
+        }*/
+
         input[type=submit]{
-            border-radius: 20%;
             width: 100%;
-            background-color: orangered;
+            background-color: #737d8c;
             color: snow;
         }
         #inputRow{
