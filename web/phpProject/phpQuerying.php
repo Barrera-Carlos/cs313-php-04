@@ -58,10 +58,14 @@ catch (PODException $ex){
         }
         input[type=text]{
             width: 75%;
+            border: none;
+            float: left;
         }
         button{
             border: none;
-            width: 20%;
+            width: 25%;
+            float: left;
+            text-align: center;
             color: snow;
             background-color: gray;
         }
