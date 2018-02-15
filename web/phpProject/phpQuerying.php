@@ -38,17 +38,21 @@ catch (PODException $ex){
         #displayContainer{
             margin-top: 20%;
         }
+        #displayRow{
+            padding-bottom: 20px;
+        }
         input[type=submit]{
             border-radius: 20%;
             width: 100%;
         }
+        #inputRow{
+           padding-top: 100px;
+        }
         input[type=text]{
-            padding-top: 100px;
             width: 100%;
         }
-        #displayRow{
-            padding-bottom: 20px;
-        }
+
+
 
 
     </style>
@@ -58,7 +62,7 @@ catch (PODException $ex){
 <?php
     echo "<div class=\"container\">";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
-    echo "<div class=\"row\">";
+    echo "<div class=\"row\" id='inputRow'>";
     echo "<div class=\"col-sm-12\" ><input type='text'></div>";
     echo "</div>";
     echo "</form></div>";
