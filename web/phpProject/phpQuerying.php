@@ -47,6 +47,7 @@ catch (PODException $ex){
             background-color: #737d8c;
             border: none;
             color: snow;
+            float: left;
             transition-duration: 0.4s;
         }
         input[type=submit]:hover{
