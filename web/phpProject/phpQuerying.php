@@ -109,7 +109,7 @@ else{
     echo "<div class=\"container\" id='displayContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text'><button style='text-align: center'>Add Subject</button></div>";
+    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text'><button>Add Subject</button></div>";
     echo "</div>";
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sqlSubjectId) as $row) {
@@ -117,9 +117,11 @@ else{
        foreach ($db->query($sqlSubject) as $column){
            echo "<div class=\"row\">";
            echo "<div class=\"col-sm-12\" id='displayRow'><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
+           #echo "<div class=\"col - sm - 12\" id='displayRow'><button onclick='selectName()'>".$column["subject_name"]."</button></div>";
            echo "</div>";
         }
     }
+    echo "<input type='submit' style='display: none' value='' name=''>";
     echo "</from>";
     echo "</div>";
 }
