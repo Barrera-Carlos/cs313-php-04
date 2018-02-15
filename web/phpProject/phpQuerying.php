@@ -45,7 +45,12 @@ catch (PODException $ex){
         input[type=submit]{
             width: 100%;
             background-color: #737d8c;
+            border: none;
             color: snow;
+            transition-duration: 0.4s;
+        }
+        input[type=submit]:hover{
+            background-color: #003d99;
         }
         #inputRow{
            padding-top: 100px;
@@ -54,6 +59,7 @@ catch (PODException $ex){
             width: 100%;
         }
         button{
+            border: none;
             width: 50%;
             color: snow;
             background-color: deepskyblue;
