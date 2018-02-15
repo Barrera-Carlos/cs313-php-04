@@ -64,7 +64,7 @@ catch (PODException $ex){
             font-size: 16px;
         }
         button{
-            padding: 5px;
+            padding: 8px;
             width: 25%;
             background: gray;
             color: snow;
