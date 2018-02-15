@@ -57,17 +57,21 @@ catch (PODException $ex){
             background-color: deepskyblue;
         }
         input[type=text]{
-            width: 75%;
             border: none;
+            width: 75%;
+            padding: 10px;
             float: left;
+            font-size: 16px;
         }
         button{
-            border: none;
+            padding: 10px;
             width: 25%;
+            background: gray;
+            color: snow;
             float: left;
             text-align: center;
-            color: snow;
-            background-color: gray;
+            font-size: 16px;
+            cursor: pointer;
         }
 
 
@@ -81,8 +85,7 @@ catch (PODException $ex){
     echo "<div class=\"container\">";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     echo "<div class=\"row\" id='inputRow'>";
-    echo "<div class=\"col-sm-6\" ><input type='text'></div>";
-    echo "<div class=\"col-sm-6\" ><button style='text-align: center'>Add Subject</button></div>";
+    echo "<div class=\"col-sm-12\" ><input type='text'><button style='text-align: center'>Add Subject</button></div>";
     echo "</div>";
     /*echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" ><button style='text-align: center'>Add Subject</button></div>";
