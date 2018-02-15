@@ -44,12 +44,19 @@ catch (PODException $ex){
         input[type=submit]{
             border-radius: 20%;
             width: 100%;
+            background-color: orangered;
+            color: snow;
         }
         #inputRow{
            padding-top: 100px;
         }
         input[type=text]{
             width: 100%;
+        }
+        button{
+            width: 50%;
+            color: snow;
+            background-color: deepskyblue;
         }
 
 
@@ -66,7 +73,7 @@ catch (PODException $ex){
     echo "<div class=\"col-sm-12\" ><input type='text'></div>";
     echo "</div>";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" ><button>Add Subject</button></div>";
+    echo "<div class=\"col-sm-12\" ><button style='text-align: center'>Add Subject</button></div>";
     echo "</div>";
     echo "</form></div>";
     /*foreach ($db->query('SELECT * FROM public.user') as $row){
