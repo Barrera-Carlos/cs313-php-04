@@ -56,13 +56,14 @@ catch (PODException $ex){
            padding-top: 100px;
         }
         input[type=text]{
-            width: 100%;
+            width: 75%;
+            background-color: deepskyblue;
         }
         button{
             border: none;
-            width: 50%;
+            width: 20%;
             color: snow;
-            background-color: deepskyblue;
+            background-color: gray;
         }
 
 
@@ -76,12 +77,13 @@ catch (PODException $ex){
     echo "<div class=\"container\">";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     echo "<div class=\"row\" id='inputRow'>";
-    echo "<div class=\"col-sm-12\" ><input type='text'></div>";
+    echo "<div class=\"col-sm-6\" ><input type='text'></div>";
+    echo "<div class=\"col-sm-6\" ><button style='text-align: center'>Add Subject</button></div>";
     echo "</div>";
-    echo "<div class=\"row\">";
+    /*echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" ><button style='text-align: center'>Add Subject</button></div>";
     echo "</div>";
-    echo "</form></div>";
+    echo "</form></div>";*/
     /*foreach ($db->query('SELECT * FROM public.user') as $row){
         echo 'id:'. $row['id'];
         echo 'username:'. $row['username'];
