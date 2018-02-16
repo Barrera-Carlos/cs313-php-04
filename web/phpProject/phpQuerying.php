@@ -75,15 +75,11 @@ catch (PODException $ex){
     </style>
     <script>
         function submitItem() {
-            //var input = document.getElementById('inputText').value;
-            var textInput = document.getElementsByClassName('form');
-            if(false){
-                textInput.action = "/QuestionSelect.php"
+            var input = document.getElementById('inputText').value;
+            if(input.length > 0){
+                document.getElementById("submit").click();
             }
             else
-                textInput.action = "phpQuerying.php";
-
-            document.getElementById("submit").click();
         }
     </script>
 </head>
@@ -91,11 +87,11 @@ catch (PODException $ex){
 <body>
 <script src="submitScript.js"></script>
 <?php
-    /*echo "<div class=\"container\" id='inputContainer'>";
-    echo "<form action=\"QuestionSelect.php\" method='post'>";
+    echo "<div class=\"container\" id='inputContainer'>";
+    echo "<form action=\"phpQuerying.php\" method='post'>";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text'><button style='text-align: center'>Add Subject</button></div>";
-    echo "</div>";*/
+    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text'><button onclick='submitItem()'>Add Subject</button></div>";
+    echo "</div>";
 
     $username = $_POST["username"];
     $logInPsw = $_POST["psw"];
@@ -116,10 +112,10 @@ if($displayName == 'empty'){
 else{
     echo "<div class=\"container\" id='displayContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post' class='form'>";
-    
-    echo "<div class=\"row\">";
+
+    /*echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' id='inputText'><button onclick='submitItem()'>Add Subject</button></div>";
-    echo "</div>";
+    echo "</div>";*/
 
     $postInputStringLength =  trim($_POST['input']);
     if(strlen($postInputStringLength) > 0){
