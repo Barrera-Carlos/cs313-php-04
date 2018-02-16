@@ -108,11 +108,17 @@ else{
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' id='inputText'><button onclick='submitItem()'>Add Subject</button></div>";
+
     $postInputStringLength =  trim($_POST['input']);
     if(strlen($postInputStringLength) > 0){
         $insertSqlSubject = "INSERT INTO public.subject VALUES(".$_POST['input'].")";
-        echo "<h1>".$_POST['input']."</h1>";
+        if($db->query($insertSqlSubject) === TRUE){
+            echo "<h1>".$_POST['input']."</h1>";
+        }
+        else
+            echo "<h1>We Did not make it boss</h1>";
     }
+
     echo "</div>";
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sqlSubjectId) as $row) {
