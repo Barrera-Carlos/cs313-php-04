@@ -49,10 +49,10 @@ catch (PODException $ex){
         input[type=submit]:hover{
             background-color: #003d99;
         }
-        #inputRow{
+        /*#inputRow{
             padding-top: 100px;
             background-color: deepskyblue;
-        }
+        }*/
         input[type=text]{
             border: none;
             width: 75%;
