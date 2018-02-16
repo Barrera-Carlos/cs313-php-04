@@ -93,11 +93,12 @@ catch (PODException $ex){
     $sameUser = false;
 
 if(array_key_exists('userId',$_SESSION) && !empty($_SESSION['userId'])){
-    if($username === $_SESSION['username'] && $logInPsw === $_SESSION['psw'])
+    $sameUser = true;
+    /*if($username === $_SESSION['username'] && $logInPsw === $_SESSION['psw'])
     {
         $sameUser = true;
         $displayName = $_SESSION["displayname"];
-    }
+    }*/
 }
 
 if(!$sameUser){
