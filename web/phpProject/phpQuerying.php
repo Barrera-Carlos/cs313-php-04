@@ -76,7 +76,7 @@ catch (PODException $ex){
     <script>
         function submitItem() {
             var input = document.getElementById('inputText').value;
-            var textInput = document.getElementsByClassName('form');
+            var textInput = document.getElementById('form');
             if(input.length === 0){
                 textInput.action = "/QuestionSelect.php"
             }
