@@ -134,8 +134,8 @@ else{
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"phpQuerying.php\" method='post'>";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text'><button onclick='submitItem()'>Add Subject</button></div>";
-    echo "<input type='submit' style='display: none' name='input' id='submit'>";
+    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='input'><button onclick='submitItem()'>Add Subject</button></div>";
+    echo "<input type='submit' style='display: none' id='submit'>";
     echo "</form>";
     echo "</div>";
 
