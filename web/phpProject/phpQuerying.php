@@ -122,11 +122,8 @@ else{
     $postInputStringLength = $_POST['input'];
     if(!$postInputStringLength == ''){
         $insertSqlSubject = "INSERT INTO public.subject (subject_name) VALUES (".$_POST['input'].")";
-        if($db->query($insertSqlSubject) === TRUE){
-            echo "<h1>".$_POST['input']."</h1>";
-        }
-        else
-            echo "<h1>We Did not make it boss 1</h1>";
+        $db->query($insertSqlSubject);
+        echo "<h1>".$_POST['input']."</h1>";
     }
     else
         echo "<h1>We Did not make it boss 2</h1>";
