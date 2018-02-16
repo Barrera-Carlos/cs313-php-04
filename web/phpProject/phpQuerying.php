@@ -126,10 +126,10 @@ else{
             echo "<h1>".$_POST['input']."</h1>";
         }
         else
-            echo "<h1>We Did not make it boss</h1>";
+            echo "<h1>We Did not make it boss 1</h1>";
     }
     else
-        echo "<h1>We Did not make it boss</h1>";
+        echo "<h1>We Did not make it boss 2</h1>";
 
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"phpQuerying.php\" method='post'>";
