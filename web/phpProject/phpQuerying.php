@@ -96,13 +96,18 @@ catch (PODException $ex){
     $username = $_POST["username"];
     $logInPsw = $_POST["psw"];
     $displayName = 'empty';
-
-foreach ($db->query('SELECT * FROM public.user') as $row){
-    if($row['username'] == $username and  $row['password'] == $logInPsw){
-        $_SESSION["userId"] = $row['id'];
-        $_SESSION["username"] = $row['username'];
-        $_SESSION["displayname"] = $row['display_name'];
-        $displayName = $row['display_name'];
+    
+if(array_key_exists('userId',$_SESSION) && !empty($_SESSION['userId'])){
+    $displayName = $row['display_name'];
+}
+else{
+    foreach ($db->query('SELECT * FROM public.user') as $row){
+        if($row['username'] == $username and  $row['password'] == $logInPsw){
+            $_SESSION["userId"] = $row['id'];
+            $_SESSION["username"] = $row['username'];
+            $_SESSION["displayname"] = $row['display_name'];
+            $displayName = $row['display_name'];
+        }
     }
 }
 
@@ -112,10 +117,6 @@ if($displayName == 'empty'){
 else{
     echo "<div class=\"container\" id='displayContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post' class='form'>";
-
-    /*echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' id='inputText'><button onclick='submitItem()'>Add Subject</button></div>";
-    echo "</div>";*/
 
     $postInputStringLength =  trim($_POST['input']);
     if(strlen($postInputStringLength) > 0){
