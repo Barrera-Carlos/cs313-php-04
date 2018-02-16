@@ -118,9 +118,9 @@ if($displayName == ''){
     echo 'Your not a valid user';
 }
 else{
-
+    $postInputStringLength = '';
     $postInputStringLength = $_POST['input'];
-    if(strlen($postInputStringLength) > 0){
+    if($postInputStringLength == ''){
         $insertSqlSubject = "INSERT INTO public.subject (subject_name) VALUES (".$_POST['input'].")";
         if($db->query($insertSqlSubject) === TRUE){
             echo "<h1>".$_POST['input']."</h1>";
