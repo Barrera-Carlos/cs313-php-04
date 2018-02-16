@@ -72,11 +72,20 @@ catch (PODException $ex){
             font-size: 16px;
             cursor: pointer;
         }
-
-
-
-
     </style>
+    <script>
+        function submitItem() {
+            var input = document.getElementById('inputText').value;
+            var textInput = document.getElementsByClassName('container');
+            if(input === ''){
+                textInput.action = "/QuestionSelect.php"
+            }
+            else
+                textInput.action = "/phpQuerying.php";
+
+            document.getElementById("submit").click();
+        }
+    </script>
 </head>
 
 <body>
