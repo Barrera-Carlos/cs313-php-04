@@ -119,6 +119,16 @@ if($displayName == ''){
 }
 else{
 
+    $postInputStringLength =  trim($_POST['input']);
+    if(strlen($postInputStringLength) > 0){
+        $insertSqlSubject = "INSERT INTO public.subject VALUES(".$_POST['input'].")";
+        if($db->query($insertSqlSubject) === TRUE){
+            echo "<h1>".$_POST['input']."</h1>";
+        }
+        else
+            echo "<h1>We Did not make it boss</h1>";
+    }
+
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"phpQuerying.php\" method='post'>";
     echo "<div class=\"row\">";
@@ -130,15 +140,7 @@ else{
     echo "<div class=\"container\" id='displayContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post' class='form'>";
 
-    $postInputStringLength =  trim($_POST['input']);
-    if(strlen($postInputStringLength) > 0){
-        $insertSqlSubject = "INSERT INTO public.subject VALUES(".$_POST['input'].")";
-        if($db->query($insertSqlSubject) === TRUE){
-            echo "<h1>".$_POST['input']."</h1>";
-        }
-        else
-            echo "<h1>We Did not make it boss</h1>";
-    }
+
 
     echo "</div>";
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
