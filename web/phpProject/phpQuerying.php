@@ -76,8 +76,8 @@ catch (PODException $ex){
     <script>
         function submitItem() {
             var input = document.getElementById('inputText').value;
-            var textInput = document.getElementsByClassName('container');
-            if(false){
+            var textInput = document.getElementsByClassName('form');
+            if(input.length === 0){
                 textInput.action = "/QuestionSelect.php"
             }
             else
@@ -115,7 +115,7 @@ if($displayName == 'empty'){
 }
 else{
     echo "<div class=\"container\" id='displayContainer'>";
-    echo "<form action=\"QuestionSelect.php\" method='post'>";
+    echo "<form action=\"QuestionSelect.php\" method='post' class='form'>";
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' id='inputText'><button onclick='submitItem()'>Add Subject</button></div>";
 
