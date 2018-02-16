@@ -81,7 +81,7 @@ catch (PODException $ex){
             else
         }
         function changeSubmit() {
-            document.getElementsByClassName('form').action = "QuestionSelect.php";
+            document.getElementById("form").action = "QuestionSelect.php";
         }
     </script>
 </head>
@@ -147,7 +147,7 @@ else{
     echo "</div>";
 
     echo "<div class=\"container\" id='displayContainer'>";
-    echo "<form action='' method='post' class='form'>";
+    echo "<form action='' method='post' id='form'>";
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sqlSubjectId) as $row) {
        $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =".$row["subject_id"];
