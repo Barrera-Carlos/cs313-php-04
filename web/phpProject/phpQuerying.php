@@ -49,10 +49,10 @@ catch (PODException $ex){
         input[type=submit]:hover{
             background-color: #003d99;
         }
-        /*#inputRow{
+        #inputRow{
             padding-top: 100px;
             background-color: deepskyblue;
-        }*/
+        }
         input[type=text]{
             border: none;
             width: 75%;
@@ -77,7 +77,6 @@ catch (PODException $ex){
             if(input.length > 0){
                 document.getElementById("submit").click();
             }
-            else
         }
         function changeSubmit() {
             document.getElementById("form").action = "QuestionSelect.php";
