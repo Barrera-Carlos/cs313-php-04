@@ -80,6 +80,9 @@ catch (PODException $ex){
             }
             else
         }
+        function changeSubmit() {
+            document.getElementsByClassName('form').action = "QuestionSelect.php";
+        }
     </script>
 </head>
 
@@ -139,26 +142,23 @@ else{
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='input'><button onclick='submitItem()'>Add Subject</button></div>";
     echo "<input type='submit' style='display: none' id='submit'>";
+    echo "</div>";
     echo "</form>";
     echo "</div>";
 
     echo "<div class=\"container\" id='displayContainer'>";
-    echo "<form action=\"QuestionSelect.php\" method='post' class='form'>";
-
-
-
-    echo "</div>";
+    echo "<form action='' method='post' class='form'>";
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sqlSubjectId) as $row) {
        $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =".$row["subject_id"];
        foreach ($db->query($sqlSubject) as $column){
            echo "<div class=\"row\">";
            #echo "<div class=\"col-sm-12\" id='displayRow'><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
-           echo "<div class=\"col - sm - 12\" id='displayRow'><button onclick='selectName()'>".$column["subject_name"]."<button>hex</button></button></div>";
+           echo "<div class=\"col - sm - 12\" id='displayRow'><button onclick='changeSubmit()'>".$column["subject_name"]."<button onclick='changeSubmit()'>hex</button></button></div>";
            echo "</div>";
         }
     }
-
+    echo "<input type='submit' style='display: none' id='submitSubject'>";
     echo "</from>";
     echo "</div>";
 }
