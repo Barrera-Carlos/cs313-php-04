@@ -151,8 +151,8 @@ else{
        $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =".$row["subject_id"];
        foreach ($db->query($sqlSubject) as $column){
            echo "<div class=\"row\">";
-           #echo "<div class=\"col-sm-12\" id='displayRow'><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
-           echo "<div class=\"col - sm - 12\" id='displayRow'><button onclick=\"changeSubmit()\">".$column["subject_name"]."<button onclick='changeSubmit()'>hex</button></button></div>";
+           echo "<div class=\"col-sm-12\" id='displayRow'><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
+           #echo "<div class=\"col - sm - 12\" id='displayRow'><button onclick=\"changeSubmit()\">".$column["subject_name"]."<button onclick='changeSubmit()'>hex</button></button></div>";
            echo "</div>";
         }
     }
