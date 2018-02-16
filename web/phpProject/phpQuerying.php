@@ -30,17 +30,15 @@ catch (PODException $ex){
 <!DOCTYPE html>
 <html>
 <head>
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<title>Scripture List</title>
+    <script src="submitScript.js"></script>
     <style>
-       /*displayContainer{
-            margin-top: 20%;
-        }*/
-        /*#displayRow{
-            padding-bottom: 20px;
-        }*/
 
         input[type=submit]{
             width: 100%;
@@ -91,7 +89,7 @@ catch (PODException $ex){
 
     $username = $_POST["username"];
     $logInPsw = $_POST["psw"];
-    $displayName = 'empy';
+    $displayName = 'empty';
 
 foreach ($db->query('SELECT * FROM public.user') as $row){
     if($row['username'] == $username and  $row['password'] == $logInPsw){
@@ -102,14 +100,19 @@ foreach ($db->query('SELECT * FROM public.user') as $row){
     }
 }
 
-if($displayName == 'empy'){
+if($displayName == 'empty'){
     echo 'Your not a valid user';
 }
 else{
     echo "<div class=\"container\" id='displayContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text'><button>Add Subject</button></div>";
+    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' id='inputText'><button onclick='submitItem()'>Add Subject</button></div>";
+    $postInputStringLength =  trim($_POST['input']);
+    if(strlen($postInputStringLength) > 0){
+        $insertSqlSubject = "INSERT INTO public.subject VALUES(".$_POST['input'].")";
+        echo "<h1>".$_POST['input']."</h1>";
+    }
     echo "</div>";
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sqlSubjectId) as $row) {
@@ -121,7 +124,7 @@ else{
            echo "</div>";
         }
     }
-    echo "<input type='submit' style='display: none' value='' name=''>";
+    echo "<input type='submit' style='display: none' name='input' id='submit'>";
     echo "</from>";
     echo "</div>";
 }
