@@ -120,7 +120,7 @@ if($displayName == ''){
 else{
     $postInputStringLength = '';
     $postInputStringLength = $_POST['input'];
-    if($postInputStringLength == ''){
+    if(!$postInputStringLength == ''){
         $insertSqlSubject = "INSERT INTO public.subject (subject_name) VALUES (".$_POST['input'].")";
         if($db->query($insertSqlSubject) === TRUE){
             echo "<h1>".$_POST['input']."</h1>";
