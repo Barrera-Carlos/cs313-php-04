@@ -38,7 +38,6 @@ catch (PODException $ex){
 	<title>Scripture List</title>
 
     <style>
-
         input[type=submit]{
             width: 100%;
             background-color: #737d8c;
@@ -51,7 +50,7 @@ catch (PODException $ex){
             background-color: #003d99;
         }
         #inputRow{
-           padding-top: 100px;
+            padding-top: 100px;
             background-color: deepskyblue;
         }
         input[type=text]{
