@@ -94,6 +94,7 @@ catch (PODException $ex){
 
 if(array_key_exists('userId',$_SESSION) && !empty($_SESSION['userId'])){
     $sameUser = true;
+    $displayName = $_SESSION["displayname"];
     /*if($username === $_SESSION['username'] && $logInPsw === $_SESSION['psw'])
     {
         $sameUser = true;
