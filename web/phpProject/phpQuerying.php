@@ -86,6 +86,37 @@ catch (PODException $ex){
 <body>
 <script src="submitScript.js"></script>
 <?php
+
+    $username = $_POST["username"];
+    $logInPsw = $_POST["psw"];
+    $displayName = '';
+    $sameUser = false;
+
+if(array_key_exists('userId',$_SESSION) && !empty($_SESSION['userId'])){
+    if($username === $_SESSION['username'] && $logInPsw === $_SESSION['psw'])
+    {
+        $sameUser = true;
+        $displayName = $_SESSION["displayname"];
+    }
+}
+
+if(!$sameUser){
+    foreach ($db->query('SELECT * FROM public.user') as $row){
+        if($row['username'] == $username and  $row['password'] == $logInPsw){
+            $_SESSION["userId"] = $row['id'];
+            $_SESSION['psw'] = $row['password'];
+            $_SESSION["username"] = $row['username'];
+            $_SESSION["displayname"] = $row['display_name'];
+            $displayName = $row['display_name'];
+        }
+    }
+}
+
+if($displayName == ''){
+    echo 'Your not a valid user';
+}
+else{
+
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"phpQuerying.php\" method='post'>";
     echo "<div class=\"row\">";
@@ -94,28 +125,6 @@ catch (PODException $ex){
     echo "</form>";
     echo "</div>";
 
-    $username = $_POST["username"];
-    $logInPsw = $_POST["psw"];
-    $displayName = 'empty';
-
-if(array_key_exists('userId',$_SESSION) && !empty($_SESSION['userId'])){
-    $displayName = $row['display_name'];
-}
-else{
-    foreach ($db->query('SELECT * FROM public.user') as $row){
-        if($row['username'] == $username and  $row['password'] == $logInPsw){
-            $_SESSION["userId"] = $row['id'];
-            $_SESSION["username"] = $row['username'];
-            $_SESSION["displayname"] = $row['display_name'];
-            $displayName = $row['display_name'];
-        }
-    }
-}
-
-if($displayName == 'empty'){
-    echo 'Your not a valid user';
-}
-else{
     echo "<div class=\"container\" id='displayContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post' class='form'>";
 
