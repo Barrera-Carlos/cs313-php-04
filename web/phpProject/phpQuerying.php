@@ -31,7 +31,6 @@ catch (PODException $ex){
 <html>
 <head>
 
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -91,12 +90,14 @@ catch (PODException $ex){
     echo "<form action=\"phpQuerying.php\" method='post'>";
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text'><button onclick='submitItem()'>Add Subject</button></div>";
+    echo "<input type='submit' style='display: none' name='input' id='submit'>";
+    echo "</form>";
     echo "</div>";
 
     $username = $_POST["username"];
     $logInPsw = $_POST["psw"];
     $displayName = 'empty';
-    
+
 if(array_key_exists('userId',$_SESSION) && !empty($_SESSION['userId'])){
     $displayName = $row['display_name'];
 }
@@ -139,7 +140,7 @@ else{
            echo "</div>";
         }
     }
-    echo "<input type='submit' style='display: none' name='input' id='submit'>";
+
     echo "</from>";
     echo "</div>";
 }
