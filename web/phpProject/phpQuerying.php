@@ -75,13 +75,13 @@ catch (PODException $ex){
     </style>
     <script>
         function submitItem() {
-            var input = document.getElementById('inputText').value;
+            //var input = document.getElementById('inputText').value;
             var textInput = document.getElementsByClassName('form');
             if(false){
                 textInput.action = "/QuestionSelect.php"
             }
             else
-                textInput.action = "/phpQuerying.php";
+                textInput.action = "phpQuerying.php";
 
             document.getElementById("submit").click();
         }
