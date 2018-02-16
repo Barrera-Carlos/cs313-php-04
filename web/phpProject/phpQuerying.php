@@ -116,8 +116,10 @@ if($displayName == 'empty'){
 else{
     echo "<div class=\"container\" id='displayContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post' class='form'>";
+    
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' id='inputText'><button onclick='submitItem()'>Add Subject</button></div>";
+    echo "</div>";
 
     $postInputStringLength =  trim($_POST['input']);
     if(strlen($postInputStringLength) > 0){
