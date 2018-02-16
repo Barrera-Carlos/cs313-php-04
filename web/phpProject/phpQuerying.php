@@ -127,6 +127,7 @@ else{
             (int)$userId = $_SESSION["userId"];
             $insertToUserSubjectName = "INSERT INTO public.user_subjects (user_id, subject_id) VALUES(".$userId.",".$newId.")";
             $db->quote($insertToUserSubjectName);
+            echo $insertToUserSubjectName;
         }
     }
     else
