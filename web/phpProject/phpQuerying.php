@@ -37,7 +37,7 @@ catch (PODException $ex){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<title>Scripture List</title>
-    <script src="submitScript.js"></script>
+
     <style>
 
         input[type=submit]{
@@ -80,6 +80,7 @@ catch (PODException $ex){
 </head>
 
 <body>
+<script src="submitScript.js"></script>
 <?php
     /*echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
