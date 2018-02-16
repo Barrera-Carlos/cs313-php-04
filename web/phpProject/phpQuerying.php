@@ -123,8 +123,10 @@ else{
     if(!$postInputStringLength == ''){
         $insertSqlSubject = "INSERT INTO public.subject (subject_name) VALUES ('".$postInputStringLength."')";
         if($db->query($insertSqlSubject) == true){
-            $newId = $db->lastInsertId('subject_id_seq');
-            echo "<h1>".$newId."</h1>";
+            (int)$newId = $db->lastInsertId('subject_id_seq');
+            (int)$userId = $_SESSION["userId"];
+            $insertToUserSubjectName = "INSERT INTO public.user_subjects (user_id, subject_id) VALUES(".$userId.",".$newId.")";
+            $db->quote($insertToUserSubjectName);
         }
     }
     else
