@@ -134,6 +134,9 @@ else{
         $subjectIdQ = "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
         foreach ($db->query($subjectIdQ) as $id){
             $bundleId = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id=".$id["id"];
+            if($db->pg_num_rows($bundleId) == 0){
+                echo "<h1>We made it boss</h1>";
+            }
             echo $bundleId;
         }
         $questionId = "";
@@ -155,8 +158,8 @@ else{
 
         }
     }
-    else
-        echo "<h1>We Did not make it boss</h1>";
+    #else
+     #   echo "<h1>We Did not make it boss</h1>";
 
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"phpQuerying.php\" method='post'>";
