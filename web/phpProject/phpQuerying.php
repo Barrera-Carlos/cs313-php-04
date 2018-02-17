@@ -134,10 +134,12 @@ else{
         $subjectIdQ = "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
         foreach ($db->query($subjectIdQ) as $id){
             $bundleId = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id=".$id["id"];
-            #psql does not like how im checking the number of rows
             if($db->query($bundleId) == true){
                 foreach ($db->query($bundleId) as $removeItem){
-                    echo $removeItem["bundle_id"];
+                    $removeItemScript = "SELECT question_id FROM public.bundle_questions WHERE bundle_id =".$removeItem["bundle_id"];
+                    foreach ($db->query($removeItemScript) as $removeQuestion){
+                        echo $removeQuestion['question_id'];
+                    }
                 }
             }
         }
