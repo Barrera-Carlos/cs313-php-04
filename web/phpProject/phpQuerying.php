@@ -131,8 +131,9 @@ else{
     if(array_key_exists("subject",$_POST) && !empty($_POST["subject"][0])) {
         #echo (string)$_POST["subject"][0];
         #echo "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
-        (int)$subjectId = "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
-        $bundleId = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id=".$subjectId;
+        (int)$subjectIdQ = "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
+        $subjectId = $db->query($subjectIdQ);
+        $bundleId = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id=".$subjectId[0];
         echo $bundleId;
         $questionId = "";
         $answerId = "";
