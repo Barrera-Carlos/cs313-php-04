@@ -163,6 +163,7 @@ else{
                 $deleteAnswers = "DELETE FROM public.answer WHERE id=".$value;
                 $db->query($deleteQuestionAnswers);
                 $db->query($deleteAnswers);
+                echo $deleteQuestionAnswers;
             }
 
         }
@@ -185,7 +186,7 @@ else{
             }
         }
         if(!empty($subjectIdArray)){
-            $deleteUserSubject = "DELETE FROM publilc.user_subjects WHERE subject_is =".$subjectIdArray[0];
+            $deleteUserSubject = "DELETE FROM public.user_subjects WHERE subject_is =".$subjectIdArray[0];
             $deleteSubject = "DELETE FROM public.subject WHERE id=".$subjectIdArray[0];
         }
         $questionId = "";
