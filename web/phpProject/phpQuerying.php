@@ -137,7 +137,8 @@ else{
             #psql does not like how im checking the number of rows
             if($db->query($bundleId) == true){
                 $subjectLength = $db->query($bundleId);
-                echo "<h1>".$subjectLength.sizeof()."</h1>";
+                $length = $subjectLength.sizeof();
+                echo "<h1>".$length."</h1>";
             }
             echo $bundleId;
         }
