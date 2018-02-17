@@ -156,13 +156,37 @@ else{
         }
 
         if(empty($answerIdArray)){
-            echo"<h1>Its looking good</h1>";
+            echo"<h1>No answers to delete</h1>";
+        }else{
+            foreach ($answerIdArray as $value){
+                $deleteQuestionAnswers = "DELETE FROM public.question_answers WHERE answer_id=".$value;
+                $deleteAnswers = "DELETE FROM public.answer WHERE id=".$value;
+                $db->query($deleteQuestionAnswers);
+                $db->query($deleteAnswers);
+            }
+
         }
         if(empty($questionIdArray)){
-            echo"<h1>Its looking good2</h1>";
+            echo"<h1>No questions to delete</h1>";
+        }else{
+            foreach ($questionIdArray as $value){
+                $deleteBundleQuestions = "DELETE FROM public.bundle_questions WHERE question_id=".$value;
+                $deleteQuestions = "DELETE FROM public.questions WHERE id=".$value;
+                $db->query($deleteBundleQuestions);
+                $db->query($deleteQuestions);
+            }
         }
         if(empty($bundleIdArray)){
-            echo"<h1>Its looking good3</h1>";
+            echo"<h1>No question bundles to delete</h1>";
+        }else{
+            foreach ($bundleIdArray as $value){
+                $deleteSubjectBundle = "DELETE FROM public.subject_bundles WHERE bundle_id =".$value;
+                $deleteBundle = "DELETE FROM public.bundle_name WHERE id =".$value;
+            }
+        }
+        if(!empty($subjectIdArray)){
+            $deleteUserSubject = "DELETE FROM publilc.user_subjects WHERE subject_is =".$subjectIdArray[0];
+            $deleteSubject = "DELETE FROM public.subject WHERE id=".$subjectIdArray[0];
         }
         $questionId = "";
         $answerId = "";
