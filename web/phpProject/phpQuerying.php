@@ -128,7 +128,7 @@ else{
 
     echo "<button onclick='changeSubmit()'>Delete subject</button>";
 
-    if(array_key_exists("subject",$_SESSION) && !empty($_POST["subject"][0])) {
+    if(array_key_exists("subject",$_POST) && !empty($_POST["subject"][0])) {
         echo (string)$_POST["subject"][0];
     }
 
