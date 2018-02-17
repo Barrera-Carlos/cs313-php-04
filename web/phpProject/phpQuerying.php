@@ -133,7 +133,7 @@ else{
         #echo "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
         (int)$subjectId = "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
         $bundleId = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id=".$subjectId;
-        echo $subjectId;
+        echo $bundleId;
         $questionId = "";
         $answerId = "";
 
