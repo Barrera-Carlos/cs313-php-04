@@ -82,11 +82,9 @@ catch (PODException $ex){
         function changeSubmit() {
             if(!deleteSubject){
                 document.getElementById("form").action = "phpQuerying.php";
-                return deleteSubject = !deleteSubject;
             }
             else {
                 document.getElementById("form").action = "QuestionSelect.php";
-                return deleteSubject = !deleteSubject;
             }
         }
     </script>
@@ -128,16 +126,12 @@ if($displayName == ''){
 }
 else{
 
-    echo "<button onclick='".$_SESSION["DeleteSubject"]." = changeSubmit()'>Delete subject</button>";
+    echo "<button onclick='changeSubmit()'>Delete subject</button>";
 
-    if(array_key_exists("DeleteSubject",$_SESSION)){
-        if($_SESSION["DeleteSubject"] == true){
-            echo (string)$_POST["subject"][0];
-        }
+    if(array_key_exists("subject",$_SESSION) && !empty($_POST["subject"][0])) {
+        echo (string)$_POST["subject"][0];
     }
-    else{
-        $_SESSION['DeleteSubject'] = false;
-    }
+
 
     $postInputStringLength = '';
     $postInputStringLength = (string)$_POST['input'];
