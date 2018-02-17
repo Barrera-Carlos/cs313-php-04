@@ -136,8 +136,9 @@ else{
             $bundleId = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id=".$id["id"];
             #psql does not like how im checking the number of rows
             if($db->query($bundleId) == true){
-                #(string)$subjectLength = $db->query($bundleId);
-                #echo "<h1>".$subjectLength."</h1>";
+                foreach ($db->query($bundleId) as $removeItem){
+                    echo $removeItem["bundle_id"];
+                }
             }
         }
         $questionId = "";
