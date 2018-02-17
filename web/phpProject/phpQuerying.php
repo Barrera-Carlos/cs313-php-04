@@ -130,9 +130,10 @@ else{
 
     if(array_key_exists("subject",$_POST) && !empty($_POST["subject"][0])) {
         #echo (string)$_POST["subject"][0];
-        echo "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
-        #$subjectId = "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
-        #$bundleId = "SELECT bundle_id FROM public.subject_bundles INNER JOIN public.subject ON public.subject_bundles.";
+        #echo "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
+        (int)$subjectId = "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
+        $bundleId = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id=".$subjectId;
+        echo $subjectId;
         $questionId = "";
         $answerId = "";
 
