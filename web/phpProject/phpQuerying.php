@@ -188,7 +188,7 @@ else{
             }
         }
         if(!empty($subjectIdArray)){
-            $deleteUserSubject = "DELETE FROM public.user_subjects WHERE subject_is =".$subjectIdArray[0];
+            $deleteUserSubject = "DELETE FROM public.user_subjects WHERE subject_id =".$subjectIdArray[0];
             $deleteSubject = "DELETE FROM public.subject WHERE id=".$subjectIdArray[0];
             echo $deleteUserSubject."</br>";
             echo $deleteSubject;
