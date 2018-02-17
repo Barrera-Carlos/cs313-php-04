@@ -184,12 +184,16 @@ else{
             foreach ($bundleIdArray as $value){
                 $deleteSubjectBundle = "DELETE FROM public.subject_bundles WHERE bundle_id =".$value;
                 $deleteBundle = "DELETE FROM public.bundle_name WHERE id =".$value;
+                $db->query($deleteSubjectBundle);
+                $db->query($deleteBundle);
                 echo $deleteSubjectBundle;
             }
         }
         if(!empty($subjectIdArray)){
             $deleteUserSubject = "DELETE FROM public.user_subjects WHERE subject_id =".$subjectIdArray[0];
             $deleteSubject = "DELETE FROM public.subject WHERE id=".$subjectIdArray[0];
+            $db->query($deleteUserSubject);
+            $db->query($deleteSubject);
             echo $deleteUserSubject."</br>";
             echo $deleteSubject;
         }
