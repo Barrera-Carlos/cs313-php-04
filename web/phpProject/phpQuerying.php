@@ -134,7 +134,8 @@ else{
         $subjectIdQ = "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
         foreach ($db->query($subjectIdQ) as $id){
             $bundleId = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id=".$id["id"];
-            if($db->pg_num_rows($bundleId) == 0){
+            #psql does not like how im checking the number of rows
+            if($db->query($bundleId) == true){
                 echo "<h1>We made it boss</h1>";
             }
             echo $bundleId;
