@@ -72,6 +72,7 @@ catch (PODException $ex){
         }
     </style>
     <script>
+        var deleteSubject = false;
         function submitItem() {
             var input = document.getElementById('inputText').value;
             if(input.length > 0){
@@ -79,7 +80,14 @@ catch (PODException $ex){
             }
         }
         function changeSubmit() {
-            document.getElementById("form").action = "QuestionSelect.php";
+            if(!deleteSubject){
+                document.getElementById("form").action = "phpQuerying.php";
+                deleteSubject = !deleteSubject;
+            }
+            else {
+                document.getElementById("form").action = "QuestionSelect.php";
+                deleteSubject = !deleteSubject;
+            }
         }
     </script>
 </head>
@@ -119,6 +127,18 @@ if($displayName == ''){
     echo 'Your not a valid user';
 }
 else{
+
+    echo "<button onclick='changeSubmit()'>Delete subject</button>";
+
+    if(array_key_exists("DeleteSubject",$_SESSION)){
+        if($_SESSION["DeleteSubject"] == true){
+            echo (string)$_POST["subject"][0];
+        }
+    }
+    else{
+        $_SESSION['DeleteSubject'] = false;
+    }
+
     $postInputStringLength = '';
     $postInputStringLength = (string)$_POST['input'];
     if(!$postInputStringLength == ''){
