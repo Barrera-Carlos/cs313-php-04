@@ -129,8 +129,12 @@ else{
     echo "<button onclick='changeSubmit()'>Delete subject</button>";
 
     if(array_key_exists("subject",$_POST) && !empty($_POST["subject"][0])) {
-        #echo (string)$_POST["subject"][0];
-        #echo "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
+
+        $subjectIdArray = array();
+        $bundleIdArray = array();
+        $questionIdArray = array();
+        $answerIdArray = array();
+
         $subjectIdQ = "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
         foreach ($db->query($subjectIdQ) as $id){
             $bundleId = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id=".$id["id"];
@@ -138,10 +142,27 @@ else{
                 foreach ($db->query($bundleId) as $removeItem){
                     $removeItemScript = "SELECT question_id FROM public.bundle_questions WHERE bundle_id =".$removeItem["bundle_id"];
                     foreach ($db->query($removeItemScript) as $removeQuestion){
-                        echo $removeQuestion['question_id'];
+                        $removeAnswerScript = "SELECT answer_id FROM public.question_answers WHERE answer_id =".$removeQuestion['question_id'];
+                        foreach ($db->query($removeItemScript) as $removeAnswer){
+                            #$deleteAnswer = "SELECT FROM public.answer WHERE id = ".$removeAnswer["answer_id"];
+                            array_push($answerIdArray,(int)$removeAnswer["answer_id"]);
+                        }
+                        array_push($questionIdArray,(int)$removeQuestion['question_id']);
                     }
+                    array_push($bundleIdArray,(int)$removeItem["bundle_id"]);
                 }
             }
+            array_push($subjectIdArray,(int)$id["id"]);
+        }
+
+        if(empty($answerIdArray)){
+            echo"<h1>Its looking good</h1>";
+        }
+        if(empty($questionIdArray)){
+            echo"<h1>Its looking good2</h1>";
+        }
+        if(empty($bundleIdArray)){
+            echo"<h1>Its looking good3</h1>";
         }
         $questionId = "";
         $answerId = "";
