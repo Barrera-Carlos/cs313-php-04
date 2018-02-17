@@ -191,6 +191,7 @@ else{
             $deleteUserSubject = "DELETE FROM public.user_subjects WHERE subject_is =".$subjectIdArray[0];
             $deleteSubject = "DELETE FROM public.subject WHERE id=".$subjectIdArray[0];
             echo $deleteUserSubject;
+            echo $deleteSubject;
         }
         $questionId = "";
         $answerId = "";
