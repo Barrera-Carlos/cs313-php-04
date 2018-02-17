@@ -129,7 +129,13 @@ else{
     echo "<button onclick='changeSubmit()'>Delete subject</button>";
 
     if(array_key_exists("subject",$_POST) && !empty($_POST["subject"][0])) {
-        echo (string)$_POST["subject"][0];
+        #echo (string)$_POST["subject"][0];
+        echo "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
+        #$subjectId = "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
+        #$bundleId = "SELECT bundle_id FROM public.subject_bundles INNER JOIN public.subject ON public.subject_bundles.";
+        $questionId = "";
+        $answerId = "";
+
     }
 
 
@@ -147,7 +153,7 @@ else{
         }
     }
     else
-        echo "<h1>We Did not make it boss 2</h1>";
+        echo "<h1>We Did not make it boss</h1>";
 
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"phpQuerying.php\" method='post'>";
