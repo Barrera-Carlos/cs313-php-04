@@ -143,8 +143,7 @@ else{
                     $removeItemScript = "SELECT question_id FROM public.bundle_questions WHERE bundle_id =".$removeItem["bundle_id"];
                     foreach ($db->query($removeItemScript) as $removeQuestion){
                         $removeAnswerScript = "SELECT answer_id FROM public.question_answers WHERE answer_id =".$removeQuestion['question_id'];
-                        foreach ($db->query($removeItemScript) as $removeAnswer){
-                            #$deleteAnswer = "SELECT FROM public.answer WHERE id = ".$removeAnswer["answer_id"];
+                        foreach ($db->query($removeAnswerScript) as $removeAnswer){
                             array_push($answerIdArray,(int)$removeAnswer["answer_id"]);
                         }
                         array_push($questionIdArray,(int)$removeQuestion['question_id']);
