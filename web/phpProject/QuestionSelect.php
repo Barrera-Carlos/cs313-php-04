@@ -59,11 +59,12 @@ catch (PODException $ex){
         if(isset($_SESSION['subjectId']) and !empty($_SESSION['subjectId'])){
             $insertSqlBundle = "INSERT INTO public.bundle_name (bundle_name) VALUES ('".$postInputStringLength."')";
             if($db->query($insertSqlBundle) == true){
-                (int)$newId = $db->lastInsertId('subject_id_seq');
+                (int)$newId = $db->lastInsertId('bundle_name_id_seq');
                 (int)$subjectId = $_SESSION["subjectId"];
                 $insertToUserSubjectName = "INSERT INTO public.subject_bundles (subject_id, bundle_id) VALUES(".$subjectId.",".$newId.")";
                 $db->query($insertToUserSubjectName);
-                echo $insertToUserSubjectName;
+                echo $insertToUserSubjectName."</br>";
+                echo $insertSqlBundle."</br>";
 
             }
         }
