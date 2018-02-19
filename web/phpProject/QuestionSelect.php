@@ -52,21 +52,40 @@ catch (PODException $ex){
 </head>
 <body>
 <?php
+
+    $postInputStringLength = '';
+    $postInputStringLength = (string)$_POST['inputQuestion'];
+    if(!$postInputStringLength == ''){
+        if(isset($_SESSION['subjectId']) and !empty($_SESSION['subjectId'])){
+            $insertSqlBundle = "INSERT INTO public.bundle_name (bundle_name) VALUES ('".$postInputStringLength."')";
+            if($db->query($insertSqlBundle) == true){
+                (int)$newId = $db->lastInsertId('subject_id_seq');
+                (int)$subjectId = $_SESSION["subjectId"];
+                $insertToUserSubjectName = "INSERT INTO public.subject_bundles (subject_id, bundle_id) VALUES(".$subjectId.",".$newId.")";
+                $db->query($insertToUserSubjectName);
+                echo $insertToUserSubjectName;
+
+            }
+        }
+
+}
+
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"phpQuerying.php\" method='post'>";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='input'><button onclick='submitItem()'>Add Subject</button></div>";
+    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='inputQuestion'><button onclick='submitItem()'>Add Subject</button></div>";
     echo "<input type='submit' style='display: none' id='submit'>";
     echo "</div>";
     echo "</form>";
     echo "</div>";
-    
+
     echo "<div class=\"container\">";
     echo "<form action=\"quiz.php\" method='post'>";
     foreach ($_POST['subject'] as $subject){
         foreach ($db->query('SELECT * FROM public.subject') as $column){
             if($subject == $column['subject_name']){
                 $select = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id =".$column['id'] ;
+                $_SESSION['subjectId'] = $column['id'];
                 foreach ($db->query($select) as $row){
                     $bundle = "SELECT bundle_name FROM public.bundle_name WHERE id =".$row[0];
                     foreach ($db->query($bundle) as $name){
