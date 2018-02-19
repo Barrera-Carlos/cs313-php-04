@@ -82,11 +82,16 @@ catch (PODException $ex){
 
     echo "<div class=\"container\">";
     echo "<form action=\"quiz.php\" method='post'>";
+    if(empty($_POST['subject']))
+    {
+        $_POST['subject']=$_SESSION['SubjectPostHolder'];
+    }
     foreach ($_POST['subject'] as $subject){
         foreach ($db->query('SELECT * FROM public.subject') as $column){
             if($subject == $column['subject_name']){
                 $select = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id =".$column['id'] ;
                 $_SESSION['subjectId'] = $column['id'];
+                $_SESSION['SubjectPostHolder'] = $_POST['subject'];
                 foreach ($db->query($select) as $row){
                     $bundle = "SELECT bundle_name FROM public.bundle_name WHERE id =".$row[0];
                     foreach ($db->query($bundle) as $name){
