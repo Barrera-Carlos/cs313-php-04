@@ -74,7 +74,7 @@ catch (PODException $ex){
             $bundleID = "SELECT id FROM public.bundle_name WHERE bundle_name =".$_POST['bundle'];
             echo $bundleID;
             $bundleIdAnswer = $db->query($bundleID);
-            echo $bundleID[0];
+            echo $bundleID['id'][0];
         }
     }
 
