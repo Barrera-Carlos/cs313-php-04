@@ -76,7 +76,14 @@ catch (PODException $ex){
                 $subjectIdScript = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id='".$_SESSION['subjectId']."'";
                 foreach ($db->query($subjectIdScript) as $userId) {
                     if($userId['bundle_id'] === $bId['id']){
-                        echo $userId['bundle_id'];
+                        echo $bId['id'];
+                        $questionSelectScript = "SELECT question_id FROM public.bundle_questions WHERE bundle_id=".$bId['id'];
+                        foreach ($db->query($questionSelectScript) as $value){
+                            $answerSelectScript = "SELECT answer_id FROM public.question_answers WHERE question_id=".$value['question_id'];
+                            foreach ($db->query($answerSelectScript) as $answerID){
+                                echo $answerID['answer_id'];
+                            }
+                        }
                     }
                 }
             }
