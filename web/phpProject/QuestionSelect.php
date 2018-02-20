@@ -53,6 +53,18 @@ catch (PODException $ex){
 <body>
 <?php
 
+    echo "<button onclick='changeSubmit()'>Delete Bundle</button>";
+    if(isset($_POST['bundle']) and  !empty($_POST['bundle'])){
+        $subjectArray = array();
+        $bundleArray = array();
+        $questionArray = array();
+        $answerArray = array();
+        if(isset( $_SESSION['subjectId']) and !empty( $_SESSION['subjectId'])){
+            $bundleID = "SELECT id FROM public.bundle_name WHERE bundle_name =".$_POST['bundle'];
+            echo $bundleID;
+        }
+    }
+
     $postInputStringLength = '';
     $postInputStringLength = (string)$_POST['inputQuestion'];
     if(!$postInputStringLength == ''){
@@ -96,7 +108,7 @@ catch (PODException $ex){
                     $bundle = "SELECT bundle_name FROM public.bundle_name WHERE id =".$row[0];
                     foreach ($db->query($bundle) as $name){
                         echo "<div class=\"row\">";
-                        echo "<div class=\"col-sm-12\"><input type='submit' value='".$name[0]."'></div>";
+                        echo "<div class=\"col-sm-12\"><input type='submit' value='".$name[0]."' name='bundle'></div>";
                         echo "</div>";
                     }
                 }
