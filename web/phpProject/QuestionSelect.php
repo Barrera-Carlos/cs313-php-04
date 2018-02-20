@@ -66,7 +66,6 @@ catch (PODException $ex){
 
     echo "<button onclick='changeSubmit()'>Delete Bundle</button>";
     if(isset($_POST['bundle']) and  !empty($_POST['bundle'])){
-        $subjectArray = array();
         $bundleArray = array();
         $questionArray = array();
         $answerArray = array();
@@ -82,10 +81,36 @@ catch (PODException $ex){
                             $answerSelectScript = "SELECT answer_id FROM public.question_answers WHERE question_id=".$value['question_id'];
                             foreach ($db->query($answerSelectScript) as $answerID){
                                 echo $answerID['answer_id'];
+                                array_push($answerArray,$answerID['answer_id']);
                             }
+                            array_push($questionArray,$value['question_id']);
                         }
+                        array_push($bundleArray,$bId['id']);
                     }
                 }
+            }
+
+            if(!empty($answerArray)){
+                foreach ($answerArray as $value){
+                    $deleteQuestionAnswer = "DELETE FROM question_answers WHERE answer_id=".$value;
+                    $deleteAnswer = "DELETE FROM answer WHERE id=".$value;
+                    $db->query($deleteQuestionAnswer);
+                    $db->query($deleteAnswer);
+                }
+            }
+            if(!empty($questionArray)){
+                foreach ($questionArray as $value){
+                    $deleteBundleQuestion = "DELETE FROM bundle_questions WHERE question_id=".$value;
+                    $deleteQuestion = "DELETE FROM questions WHERE id=".$value;
+                    $db->query($deleteBundleQuestion);
+                    $db->query($deleteQuestion);
+                }
+            }
+            if(!empty($bundleArray)){
+                $deleteSubjectBundle = "DELETE FROM subject_bundles WHERE bundle_id=".$value;
+                $deleteBundle = "DELETE FROM bundle_name WHERE id=".$value;
+                $db->query($deleteSubjectBundle);
+                $db->query($deleteBundle);
             }
         }
     }
