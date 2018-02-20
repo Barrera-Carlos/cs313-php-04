@@ -72,7 +72,7 @@ catch (PODException $ex){
         $answerArray = array();
         if(isset( $_SESSION['subjectId']) and !empty( $_SESSION['subjectId'])){
             $bundleID = "SELECT id FROM public.bundle_name WHERE bundle_name =".$_POST['bundle'];
-            echo $bundleID;
+            echo $bundleID.'</br>';
             $bundleIdAnswer = $db->query($bundleID);
             echo $bundleID['id'][0];
         }
