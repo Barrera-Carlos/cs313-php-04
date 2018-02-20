@@ -73,7 +73,12 @@ catch (PODException $ex){
         if(isset( $_SESSION['subjectId']) and !empty( $_SESSION['subjectId'])){
             $bundleIDScript = "SELECT id FROM public.bundle_name WHERE bundle_name ='".$_POST['bundle']."'";
             foreach ($db->query($bundleIDScript) as $bId){
-                echo $bId['id'];
+                $subjectIdScript = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id='".$_SESSION['subjectId']."'";
+                foreach ($db->query($subjectIdScript) as $userId) {
+                    if($userId['bundle_id'] === $bId['id']){
+                        echo $userId['bundle_id'];
+                    }
+                }
             }
         }
     }
