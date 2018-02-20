@@ -49,6 +49,17 @@ catch (PODException $ex){
             padding-bottom: 20px;
         }
     </style>
+    <script>
+        var deleteBundle = false;
+        function changeSubmit() {
+            if(!deleteBundle){
+                document.getElementById("bundleSubmit").action = "QuestionSelect.php"
+            }
+            else {
+                document.getElementById("bundleSubmit").action = "quiz.php"
+            }
+        }
+    </script>
 </head>
 <body>
 <?php
@@ -93,7 +104,7 @@ catch (PODException $ex){
     echo "</div>";
 
     echo "<div class=\"container\">";
-    echo "<form action=\"quiz.php\" method='post'>";
+    echo "<form action=\"quiz.php\" method='post' id='bundleSubmit'>";
     if(empty($_POST['subject']))
     {
         $_POST['subject']=$_SESSION['SubjectPostHolder'];
