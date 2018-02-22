@@ -64,7 +64,7 @@ catch (PODException $ex){
                 $question = $db->query($questionString);
                 $answer = $db->query($answerString);
                 echo $questionString." ".$answerString."</br>";
-                echo $question['question'][0]." ".$answer['answer'][0]."</br>";
+                echo $question[0]." ".$answer[0]."</br>";
             }
 
         }
