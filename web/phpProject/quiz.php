@@ -61,10 +61,11 @@ catch (PODException $ex){
             foreach ($db->query($questionSelectString) as $questionId){
                 $questionString = "SELECT question FROM questions WHERE id =".$questionId['question_id'];
                 $answerString = "SELECT answer FROM answer WHERE id =".$questionId['question_id'];
-                $question = $db->query($questionString);
-                $answer = $db->query($answerString);
                 echo $questionString." ".$answerString."</br>";
-                echo $question['question']." ".$answer['answer']."</br>";
+                foreach ($db->query($questionString) as $question)
+                    foreach ($db->query($answerString) as $answer){
+                        echo $question['question'].' '.$answer['answer']."</br>";
+                    }
             }
 
         }
