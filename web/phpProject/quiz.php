@@ -46,11 +46,19 @@ catch (PODException $ex){
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='inputAnswer'>";
     echo "<input type='text' name='inputQuestion'>";
-    echo "<input type='button' name='inputQuestion' onclick=''></div>";
+    echo "<input type='button' name='inputQuestion' onclick=''>Submit question and answer</button></div>";
     echo "<input type='submit' style='display: none' id='submit'>";
     echo "</div>";
     echo "</form>";
     echo "</div>";
+
+    if(isset($_POST['bundle']) and !empty($_POST['bundle'])){
+        echo "<div class=\"container\">";
+        echo "<form action=\"\" method='post' id=''>";
+        echo $_POST['bundle'];
+        echo "</form>";
+        echo "</div>";
+    }
 
 ?>
 </body>
