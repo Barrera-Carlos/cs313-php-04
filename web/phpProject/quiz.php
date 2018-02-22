@@ -59,8 +59,8 @@ catch (PODException $ex){
         foreach ($db->query($bundleSearchString) as $bundleId){
             $questionSelectString = "SELECT question_id FROM bundle_questions WHERE bundle_id=".$bundleId['id'];
             foreach ($db->query($questionSelectString) as $questionId){
-                $questionString = "SELECT question FROM questions WHERE id =".$questionId['id'];
-                $answerString = "SELECT answer FROM answer WHERE id =".$questionId['id'];
+                $questionString = "SELECT question FROM questions WHERE id =".$questionId['question_id'];
+                $answerString = "SELECT answer FROM answer WHERE id =".$questionId['question_id'];
                 $question = $db->query($questionString);
                 $answer = $db->query($answerString);
                 echo $questionString." ".$answerString."</br>";
