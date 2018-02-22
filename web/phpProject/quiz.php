@@ -57,8 +57,15 @@ catch (PODException $ex){
         echo "<form action=\"\" method='post' id=''>";
         $bundleSearchString = "SELECT id FROM bundle_name WHERE bundle_name='".$_POST['bundle']."'";
         foreach ($db->query($bundleSearchString) as $bundleId){
-            echo $bundleId['id'];
-            echo $bundleSearchString;
+            $questionSelectString = "SELECT question_id FROM bundle_questions WHERE bundle_id=".$bundleId['id'];
+            foreach ($db->query($questionSelectString) as $questionId){
+                $questionString = "SELECT question FROM questions WHERE id =".$questionId['id'];
+                $answerString = "SELECT answer FROM answer WHERE id =".$questionId['id'];
+                $question = $db->query($questionString);
+                $answer = $db->query($answerString);
+                echo $question[0]." ".$answer[0]."</br>";
+            }
+
         }
 
         echo "</form>";
