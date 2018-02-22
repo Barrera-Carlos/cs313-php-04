@@ -55,10 +55,9 @@ catch (PODException $ex){
     if(isset($_POST['bundle']) and !empty($_POST['bundle'])){
         echo "<div class=\"container\">";
         echo "<form action=\"\" method='post' id=''>";
-        echo $_POST['bundle'];
         $bundleSearchString = "SELECT id FROM bundle_name WHERE bundle_name='".$_POST['bundle']."'";
         foreach ($db->query($bundleSearchString) as $bundleId){
-            echo $bundleId['bundle_name'];
+            echo $bundleId['id'];
             echo $bundleSearchString;
         }
 
