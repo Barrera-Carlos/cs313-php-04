@@ -46,7 +46,7 @@ catch (PODException $ex){
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='inputAnswer'>";
     echo "<input type='text' name='inputQuestion'>";
-    echo "<input type='button' name='inputQuestion' onclick=''>Submit question and answer</button></div>";
+    echo "<button>Submit question and answer</button></div>";
     echo "<input type='submit' style='display: none' id='submit'>";
     echo "</div>";
     echo "</form>";
@@ -57,8 +57,11 @@ catch (PODException $ex){
         echo "<form action=\"\" method='post' id=''>";
         echo $_POST['bundle'];
         $bundleSearchString = "SELECT id FROM bundle_name WHERE bundle_name='".$_POST['bundle']."'";
-        foreach ($db->query($bundleSearchString) as $bundleId)
+        foreach ($db->query($bundleSearchString) as $bundleId){
             echo $bundleId['bundle_name'];
+            echo $bundleSearchString;
+        }
+
         echo "</form>";
         echo "</div>";
     }
