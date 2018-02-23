@@ -45,7 +45,13 @@ catch (PODException $ex){
 <body>
 <?php
     if((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']) and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion'])))){
-        echo "im set sol";
+        if (isset($_POST['question']) or isset($_POST['answer'])){
+            echo "you are updating a table";
+        }
+        else{
+            echo "you are just adding to the table";
+        }
+
     }
 
     echo "<div class=\"container\" id='inputContainer'>";
