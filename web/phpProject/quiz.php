@@ -54,7 +54,10 @@ catch (PODException $ex){
             }
         }
         elseif ((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']))and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
-            echo "you are just adding to the table";
+            echo "you are just adding to the table <br>";
+            $questionInsertString = "INSERT INTO questions (question) VALUES ('".$_POST['inputQuestion']."')";
+            $answerInsertString = "INSERT INTO answer (answer) VALUES ('".$_POST['inputAnswer']."')";
+            echo $questionSelectString." ".$answerInsertString;
         }
 
     }
@@ -81,6 +84,7 @@ catch (PODException $ex){
         $_SESSION['bundleName'] = $_POST['bundle'];
         $bundleSearchString = "SELECT id FROM bundle_name WHERE bundle_name='".$_POST['bundle']."'";
         foreach ($db->query($bundleSearchString) as $bundleId){
+            $_SESSION['bundleId'] = $bundleId['id'];
             $questionSelectString = "SELECT question_id FROM bundle_questions WHERE bundle_id=".$bundleId['id'];
             foreach ($db->query($questionSelectString) as $questionId){
                 $questionString = "SELECT question FROM questions WHERE id =".$questionId['question_id'];
