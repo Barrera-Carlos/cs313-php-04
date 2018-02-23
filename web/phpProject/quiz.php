@@ -63,18 +63,17 @@ catch (PODException $ex){
             foreach ($db->query($duplicateQuestions) as $value){
                 if($value['question'] == $_POST['inputQuestion']){
                     $questionIdentifier += 1;
-                    echo $value['question']."</br>";
                 }
             }
             $question = $_POST['inputQuestion']."(".$questionIdentifier.")";
-
+            echo $question."</br>";
             foreach ($db->query($duplicateAnswers) as $value){
                 if ($value['answer'] == $_POST['inputAnswer']){
                     $answerIdentifier += 1;
-                    echo $value['answer'];
                 }
             }
             $answer = $_POST['inputAnswer']."(".$answerIdentifier.")";
+            echo $answer."</br>";
 
             $questionInsertString = "INSERT INTO questions (question) VALUES ('".$question."')";
             $answerInsertString = "INSERT INTO answer (answer) VALUES ('".$answer."')";
