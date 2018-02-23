@@ -62,6 +62,7 @@ catch (PODException $ex){
 
     if((!isset($_POST['bundle']) or empty($_POST['bundle'])) and (isset($_SESSION['bundleId']) and !empty($_SESSION['bundleId']))){
         $_POST['bundle'] = $_SESSION['bundleName'];
+        echo "im not here";
     }
     if(isset($_POST['bundle']) and !empty($_POST['bundle'])){
         $_SESSION['bundleName'] = $_POST['bundle'];
