@@ -60,7 +60,7 @@ catch (PODException $ex){
 
             $questionInsertString = "INSERT INTO questions (question) VALUES ('".$question."')";
             $answerInsertString = "INSERT INTO answer (answer) VALUES ('".$answer."')";
-
+            echo $question;
             $duplicateQuestions = "SELECT * FROM questions WHERE question=".$_POST['inputQuestion'];
             $duplicateAnswers = "SELECT * FROM answer WHERE answer=".$_POST['inputAnswer'];
             foreach ($db->query($duplicateQuestions) as $value){
