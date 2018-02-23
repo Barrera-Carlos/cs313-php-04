@@ -46,7 +46,12 @@ catch (PODException $ex){
 <?php
     if((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer'])) or (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
         if (isset($_POST['question']) or isset($_POST['answer'])){
-            echo "you are updating a table";
+            if (isset($_POST['question']) and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
+                echo "a question wants to be updated";
+            }
+            if (isset($_POST['answer']) and (isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']))){
+                echo "a answer wants to be updated";
+            }
         }
         elseif ((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']))and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
             echo "you are just adding to the table";
