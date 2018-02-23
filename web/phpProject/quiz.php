@@ -60,7 +60,7 @@ catch (PODException $ex){
     echo "</div>";
 
 
-    if((!isset($_POST['bundle']) or empty($_POST['bundle'])) and (isset($_SESSION['bundleId']) and !empty($_SESSION['bundleId']))){
+    if(!isset($_POST['bundle']) or empty($_POST['bundle'])){
         $_POST['bundle'] = $_SESSION['bundleName'];
         echo "im not here";
     }
