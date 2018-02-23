@@ -44,15 +44,16 @@ catch (PODException $ex){
 </head>
 <body>
 <?php
-    if((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']) and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion'])))){
+    if((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer'])) or (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
         if (isset($_POST['question']) or isset($_POST['answer'])){
             echo "you are updating a table";
         }
-        else{
+        elseif ((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']))and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
             echo "you are just adding to the table";
         }
 
     }
+
 
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"quiz.php\" method='post'>";
