@@ -102,8 +102,10 @@ catch (PODException $ex){
             $questionIdArray = array();
             $answerIdArray = array();
             if(isset($_POST['question'])){
-                echo count($_POST['question']);
-                #echo $_POST['question'][0];
+                $c= count($_POST['question']);
+                for ($x=0; $x < c; $x++){
+                    echo $_POST['question'][$x];
+                }
             }
             if(isset($_POST['answer'])){
                 foreach ($_POST['answer'] as $value){
