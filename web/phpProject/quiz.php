@@ -37,12 +37,15 @@ catch (PODException $ex){
     <style>
     </style>
     <script>
+        function clickSubmit() {
+            document.getElementById('mainFormSubmit').click();
+        }
     </script>
 </head>
 <body>
 <?php
     echo "<div class=\"container\" id='inputContainer'>";
-    echo "<form action=\"QuestionSelect.php\" method='post'>";
+    echo "<form action=\"quiz.php\" method='post'>";
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='inputAnswer'>";
     echo "<input type='text' name='inputQuestion'>";
@@ -50,17 +53,18 @@ catch (PODException $ex){
     echo "</div>";
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'>";
-    echo "<button>Submit</button>";
-    echo "<button>Update question/answer</button>";
-    echo "<button>Delete question and answer</button>";
+    echo "<button onclick='clickSubmit()'>Submit</button>";
+    echo "<button onclick='clickSubmit()'>Update question/answer</button>";
+    echo "<button onclick='clickSubmit()'>Delete question and answer</button>";
     echo "</div>";
-    echo "</div>";
-    echo "</form>";
     echo "</div>";
 
+
+    if((!isset($_POST['bundle']) or empty($_POST['bundle'])) and (isset($_SESSION['bundleId']) and !empty($_SESSION['bundleId']))){
+        $_POST['bundle'] = $_SESSION['bundleName'];
+    }
     if(isset($_POST['bundle']) and !empty($_POST['bundle'])){
-        echo "<div class=\"container\">";
-        echo "<form action=\"\" method='post' id=''>";
+        $_SESSION['bundleName'] = $_POST['bundle'];
         $bundleSearchString = "SELECT id FROM bundle_name WHERE bundle_name='".$_POST['bundle']."'";
         foreach ($db->query($bundleSearchString) as $bundleId){
             $questionSelectString = "SELECT question_id FROM bundle_questions WHERE bundle_id=".$bundleId['id'];
