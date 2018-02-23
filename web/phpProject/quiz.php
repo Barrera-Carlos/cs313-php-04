@@ -104,13 +104,13 @@ catch (PODException $ex){
             $answerIdArray = array();
             if(isset($_POST['question'])){
                 foreach ($_POST['question'] as $value){
-                    $delete1 = "SELECT id FROM questions WHERE question ='".$value['question']."'";
+                    /*$delete1 = "SELECT id FROM questions WHERE question ='".$value['question']."'";
                     echo $delete1."</br>";
                     foreach ($db->query($delete1) as $item){
                         array_push($questionIdArray,$item['id']);
-                        echo $item['id']."</br>";
-                    }
 
+                    }*/
+                    echo $value['question']."</br>";
                 }
             }
             if(isset($_POST['answer'])){
