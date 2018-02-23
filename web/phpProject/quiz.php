@@ -44,10 +44,14 @@ catch (PODException $ex){
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"QuestionSelect.php\" method='post'>";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='inputAnswer'>";
+    echo "<div class=\"col-sm-6\" id='inputRow'><input type='text' name='inputAnswer'>";
     echo "<input type='text' name='inputQuestion'>";
+    echo "</div>";
+    echo "<div class=\"col-sm-6\" id='inputRow'>";
     echo "<button>Submit question and answer</button></div>";
     echo "<input type='submit' style='display: none' id='submit'>";
+    echo "<button>Update question/answer</button>";
+    echo "<button>Delete question and answer</button>";
     echo "</div>";
     echo "</form>";
     echo "</div>";
@@ -61,11 +65,10 @@ catch (PODException $ex){
             foreach ($db->query($questionSelectString) as $questionId){
                 $questionString = "SELECT question FROM questions WHERE id =".$questionId['question_id'];
                 $answerString = "SELECT answer FROM answer WHERE id =".$questionId['question_id'];
-                echo $questionString." ".$answerString."</br>";
                 foreach ($db->query($questionString) as $question)
                     foreach ($db->query($answerString) as $answer){
                         #echo $question['question'].' '.$answer['answer']."</br>";
-                        echo "<div>";
+                        echo "<div class='row'>";
                         echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$answer['answer']."' name='bundle'>".$question['question']."</div>";
                         echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$question['question']."'>".$answer['answer']."</div>";
                         echo "</div>";
@@ -73,7 +76,7 @@ catch (PODException $ex){
             }
 
         }
-
+        echo "<input type='submit' style='display: none' id='mainFormSubmit'>";
         echo "</form>";
         echo "</div>";
     }
