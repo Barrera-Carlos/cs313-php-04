@@ -66,8 +66,8 @@ catch (PODException $ex){
                     foreach ($db->query($answerString) as $answer){
                         #echo $question['question'].' '.$answer['answer']."</br>";
                         echo "<div>";
-                        echo "<div class=\"col-sm-12\"><input type='checkbox' value='".$question['question']." "."' name='bundle'>";
-                        echo "<input type='checkbox' value='".$answer['answer']."'></div>";
+                        echo "<div class=\"col-sm-12\"><input type='checkbox' value='".$answer['answer']."' name='bundle'>".$question['question'];
+                        echo "<input type='checkbox' value='".$question['question']."'>".$answer['answer']."</div>";
                         echo "</div>";
                     }
             }
