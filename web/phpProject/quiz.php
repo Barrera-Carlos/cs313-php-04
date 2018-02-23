@@ -54,19 +54,21 @@ catch (PODException $ex){
             }
         }
         elseif ((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']))and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
+            $questionIdentifier = 1;
+            $answerIdentifier = 1;
 
             $question = $_POST['inputQuestion'];
             $answer = $_POST['inputAnswer'];
 
             $questionInsertString = "INSERT INTO questions (question) VALUES ('".$question."')";
             $answerInsertString = "INSERT INTO answer (answer) VALUES ('".$answer."')";
-            #echo $question;
             $duplicateQuestions = "SELECT * FROM questions WHERE question='".$_POST['inputQuestion']."'";
             $duplicateAnswers = "SELECT * FROM answer WHERE answer='".$_POST['inputAnswer']."'";
-            echo $duplicateQuestions;
+
             foreach ($db->query($duplicateQuestions) as $value){
                 if($value['question'] == $question){
-                    echo $question;
+                    $questionIdentifier += 1;
+                    echo $question.'('.$questionIdentifier.")";
                 }
             }
         }
