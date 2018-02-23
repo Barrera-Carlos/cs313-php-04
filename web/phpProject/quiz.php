@@ -99,19 +99,10 @@ catch (PODException $ex){
     }
     else{
         if(isset($_POST['question']) or isset($_POST['answer'])){
-            echo "im in<br>";
             $questionIdArray = array();
             $answerIdArray = array();
             if(isset($_POST['question'])){
-                foreach ($_POST['question'] as $value){
-                    /*$delete1 = "SELECT id FROM questions WHERE question ='".$value['question']."'";
-                    echo $delete1."</br>";
-                    foreach ($db->query($delete1) as $item){
-                        array_push($questionIdArray,$item['id']);
-
-                    }*/
-                    echo $value['question']."</br>";
-                }
+                echo $_POST['question'][0];
             }
             if(isset($_POST['answer'])){
                 foreach ($_POST['answer'] as $value){
@@ -152,7 +143,6 @@ catch (PODException $ex){
                     foreach ($db->query($answerString) as $answer){
                         $questionValue = $question['question'];
                         $answerValue = $answer['answer'];
-                        echo $questionValue.' '.$answerValue."</br>";
                         echo "<div class='row'>";
                         echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$questionValue."' name='question[]'>".$question['question']."</div>";
                         echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$answerValue."' name='answer[]'>".$answer['answer']."</div>";
