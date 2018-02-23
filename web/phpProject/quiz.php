@@ -57,20 +57,27 @@ catch (PODException $ex){
             $questionIdentifier = 1;
             $answerIdentifier = 1;
 
-            $question = $_POST['inputQuestion'];
-            $answer = $_POST['inputAnswer'];
-
-            $questionInsertString = "INSERT INTO questions (question) VALUES ('".$question."')";
-            $answerInsertString = "INSERT INTO answer (answer) VALUES ('".$answer."')";
             $duplicateQuestions = "SELECT * FROM questions WHERE question='".$_POST['inputQuestion']."'";
             $duplicateAnswers = "SELECT * FROM answer WHERE answer='".$_POST['inputAnswer']."'";
 
             foreach ($db->query($duplicateQuestions) as $value){
-                if($value['question'] == $question){
+                if($value['question'] == $_POST['inputQuestion']){
                     $questionIdentifier += 1;
-                    echo $question.'('.$questionIdentifier.")";
                 }
             }
+            $question = $_POST['inputQuestion']."(".$questionIdentifier.")";
+
+            foreach ($db->query($duplicateAnswers) as $value){
+                if ($value['answer'] == $_POST['inputAnswer']){
+                    $answerIdentifier += 1;
+                }
+            }
+            $answer = $_POST['inputAnswer']."(".$answerIdentifier.")";
+
+            $questionInsertString = "INSERT INTO questions (question) VALUES ('".$question."')";
+            $answerInsertString = "INSERT INTO answer (answer) VALUES ('".$answer."')";
+            $db->query($questionInsertString);
+            $db->query($answerInsertString);
         }
 
     }
