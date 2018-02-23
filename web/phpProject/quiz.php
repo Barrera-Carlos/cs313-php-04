@@ -103,7 +103,7 @@ catch (PODException $ex){
             $answerIdArray = array();
             if(isset($_POST['question'])){
                 $c= count($_POST['question']);
-                for ($x=0; $x < c; $x++){
+                for ($x=0; $x < $c; $x++){
                     echo $_POST['question'][$x];
                 }
             }
