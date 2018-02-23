@@ -110,6 +110,11 @@ catch (PODException $ex){
                         $delete2 = "DELETE FROM question_answers WHERE question_id=".$item['id'];
                         $delete3 = "DELETE FROM questions WHERE id=".$item['id'];
                         $delete4 = "DELETE FROM answer WHERE id=".$item['id'];
+                        $db->query($delete1);
+                        $db->query($delete2);
+                        $db->query($delete3);
+                        $db->query($delete4);
+
                     }
                 }
             }
