@@ -150,9 +150,12 @@ catch (PODException $ex){
                 $answerString = "SELECT answer FROM answer WHERE id =".$questionId['question_id'];
                 foreach ($db->query($questionString) as $question)
                     foreach ($db->query($answerString) as $answer){
+                        $questionValue = $question['question'];
+                        $answerValue = $answer['answer'];
+                        echo $questionValue.' '.$answerValue."</br>";
                         echo "<div class='row'>";
-                        echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$question['question']."' name='question[]'>".$question['question']."</div>";
-                        echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$answer['answer']."' name='answer[]'>".$answer['answer']."</div>";
+                        echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$questionValue."' name='question[]'>".$question['question']."</div>";
+                        echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$answerValue."' name='answer[]'>".$answer['answer']."</div>";
                         echo "</div>";
                     }
             }
