@@ -44,6 +44,10 @@ catch (PODException $ex){
 </head>
 <body>
 <?php
+    if((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']) and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion'])))){
+        echo "im set sol";
+    }
+
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"quiz.php\" method='post'>";
     echo "<div class=\"row\">";
@@ -62,7 +66,6 @@ catch (PODException $ex){
 
     if(!isset($_POST['bundle']) or empty($_POST['bundle'])){
         $_POST['bundle'] = $_SESSION['bundleName'];
-        echo "im not here";
     }
     if(isset($_POST['bundle']) and !empty($_POST['bundle'])){
         $_SESSION['bundleName'] = $_POST['bundle'];
@@ -76,8 +79,8 @@ catch (PODException $ex){
                     foreach ($db->query($answerString) as $answer){
                         #echo $question['question'].' '.$answer['answer']."</br>";
                         echo "<div class='row'>";
-                        echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$answer['answer']."' name='bundle'>".$question['question']."</div>";
-                        echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$question['question']."'>".$answer['answer']."</div>";
+                        echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$answer['answer']."' name='question[]'>".$question['question']."</div>";
+                        echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$question['question']."' name='answer[]'>".$answer['answer']."</div>";
                         echo "</div>";
                     }
             }
