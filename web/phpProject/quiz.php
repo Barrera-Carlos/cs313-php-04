@@ -78,8 +78,15 @@ catch (PODException $ex){
             $answerInsertString = "INSERT INTO answer (answer) VALUES ('".$answer."')";
             echo $questionInsertString."</br>";
             echo $answerInsertString."</br>";
-            $db->query($questionInsertString);
-            $db->query($answerInsertString);
+            #$db->query($questionInsertString);
+            #$db->query($answerInsertString);
+            (int)$questionId = $db->lastInsertId('questions_id_seq');
+            (int)$answerId = $db->lastInsertId('answer_id_seq');
+
+            $insertQuestionId = "INSERT INTO bundle_questions(bundle_id,question_id) VALUES (".$_SESSION['bundleId'].','.$questionId.")";
+            $insertAnswerId = "INSERT INTO question_answers(question_id,answer_id) VALUE (".$questionId.",".$answerId.")";
+            echo $insertAnswerId."</br>";
+            echo $insertQuestionId."</br>";
         }
 
     }
