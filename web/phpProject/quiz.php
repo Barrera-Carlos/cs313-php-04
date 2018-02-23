@@ -112,14 +112,14 @@ catch (PODException $ex){
                     }
 
                 }
-                if(isset($_POST['answer'])){
-                    foreach ($_POST['answer'] as $value){
-                        $delete1 = "SELECT id FROM answer WHERE answer ='".$value['answer']."'";
-                        echo $delete1."</br>";
-                        foreach ($db->query($delete1) as $item){
-                            array_push($questionIdArray,$item['id']);
-                            echo $item['id']."</br>";
-                        }
+            }
+            if(isset($_POST['answer'])){
+                foreach ($_POST['answer'] as $value){
+                    $delete1 = "SELECT id FROM answer WHERE answer ='".$value['answer']."'";
+                    echo $delete1."</br>";
+                    foreach ($db->query($delete1) as $item){
+                        array_push($questionIdArray,$item['id']);
+                        echo $item['id']."</br>";
                     }
                 }
             }
