@@ -99,6 +99,7 @@ catch (PODException $ex){
     }
     else{
         if(isset($_POST['question']) or isset($_POST['answer'])){
+            echo "im in<br>";
             $questionIdArray = array();
             $answerIdArray = array();
             if(isset($_POST['question'])){
