@@ -58,6 +58,11 @@ catch (PODException $ex){
         }
 
     }
+    else{
+        if(isset($_POST['question']) or isset($_POST['answer'])){
+            echo "you are deleting an item from the table";
+        }
+    }
 
 
     echo "<div class=\"container\" id='inputContainer'>";
