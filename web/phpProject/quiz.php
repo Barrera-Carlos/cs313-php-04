@@ -99,24 +99,27 @@ catch (PODException $ex){
     }
     else{
         if(isset($_POST['question']) or isset($_POST['answer'])){
-            foreach ($_POST['question'] as $value){
-                $delete = "SELECT id FROM questions WHERE question ='".$value['question']."'";
-                foreach ($db->query($delete) as $item){
-                    $deleteBundleQuestion = "DELETE FROM bundle_questions WHERE question_id=".$item['id'];
-                    $deleteQuestionAnswer = "DELETE FROM question_answers WHERE question_id =".$item['id'];
-                    $deleteQuestion = "DELETE FROM questions WHERE id =".$item['id'];
-                    $deleteAnswer = "DELETE FROM answer WHERE id =".$item['id'];
-                    if($db->query($deleteBundleQuestion) == true){
-                        if($db->query($deleteQuestionAnswer) == true){
-                            $db->query($deleteQuestion);
-                            $db->query($deleteAnswer);
-                        }
+            $questionIdArray = array();
+            $answerIdArray = array();
+            if(isset($_POST['question'])){
+                foreach ($_POST['question'] as $value){
+                    $delete1 = "SELECT id FROM questions WHERE question ='".$value['question']."'";
+                    foreach ($db->query($delete1) as $item){
+                        array_push($questionIdArray,$item['id']);
+                        echo $item['id']."</br>";
                     }
 
                 }
+                if(isset($_POST['answer'])){
+                    foreach ($_POST['answer'] as $value){
+                        $delete1 = "SELECT id FROM answer WHERE answer ='".$value['answer']."'";
+                        foreach ($db->query($delete1) as $item){
+                            array_push($questionIdArray,$item['id']);
+                            echo $item['id']."</br>";
+                        }
+                    }
+                }
             }
-
-
         }
     }
 
