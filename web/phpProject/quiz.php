@@ -65,28 +65,36 @@ catch (PODException $ex){
                     $questionIdentifier += 1;
                 }
             }
-            $question = $_POST['inputQuestion']."(".$questionIdentifier.")";
+            if($questionIdentifier > 1){
+                $question = $_POST['inputQuestion']."(".$questionIdentifier.")";
+            }
+            else
+                $question = $_POST['inputQuestion'];
 
             foreach ($db->query($duplicateAnswers) as $value){
                 if ($value['answer'] == $_POST['inputAnswer']){
                     $answerIdentifier += 1;
                 }
             }
-            $answer = $_POST['inputAnswer']."(".$answerIdentifier.")";
+            if ($answerIdentifier > 1){
+                $answer = $_POST['inputAnswer']."(".$answerIdentifier.")";
+            }
+            else
+                $answer = $_POST['inputAnswer'];
 
             $questionInsertString = "INSERT INTO questions (question) VALUES ('".$question."')";
             $answerInsertString = "INSERT INTO answer (answer) VALUES ('".$answer."')";
             echo $questionInsertString."</br>";
             echo $answerInsertString."</br>";
-            #$db->query($questionInsertString);
-            #$db->query($answerInsertString);
+            $db->query($questionInsertString);
+            $db->query($answerInsertString);
             (int)$questionId = $db->lastInsertId('questions_id_seq');
             (int)$answerId = $db->lastInsertId('answer_id_seq');
 
             $insertQuestionId = "INSERT INTO bundle_questions(bundle_id,question_id) VALUES (".$_SESSION['bundleId'].','.$questionId.")";
             $insertAnswerId = "INSERT INTO question_answers(question_id,answer_id) VALUE (".$questionId.",".$answerId.")";
-            echo $insertAnswerId."</br>";
-            echo $insertQuestionId."</br>";
+            $db->query($insertQuestionId);
+            $db->query($insertAnswerId);
         }
 
     }
@@ -120,7 +128,6 @@ catch (PODException $ex){
                 $answerString = "SELECT answer FROM answer WHERE id =".$questionId['question_id'];
                 foreach ($db->query($questionString) as $question)
                     foreach ($db->query($answerString) as $answer){
-                        #echo $question['question'].' '.$answer['answer']."</br>";
                         echo "<div class='row'>";
                         echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$answer['answer']."' name='question[]'>".$question['question']."</div>";
                         echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$question['question']."' name='answer[]'>".$answer['answer']."</div>";
