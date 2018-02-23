@@ -50,8 +50,7 @@ catch (PODException $ex){
     echo "</div>";
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'>";
-    echo "<button>Submit question and answer</button></div>";
-    echo "<input type='submit' style='display: none' id='submit'>";
+    echo "<button>Submit</button>";
     echo "<button>Update question/answer</button>";
     echo "<button>Delete question and answer</button>";
     echo "</div>";
