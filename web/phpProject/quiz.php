@@ -70,14 +70,7 @@ catch (PODException $ex){
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='inputQuestion'>";
     echo "<input type='text' name='inputAnswer'>";
-    echo "</div>";
-    echo "</div>";
-    echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" id='inputRow'>";
-    echo "<button onclick='clickSubmit()'>Submit</button>";
-    echo "<button onclick='clickSubmit()'>Update question/answer</button>";
-    echo "<button onclick='clickSubmit()'>Delete question and answer</button>";
-    echo "</div>";
+    echo "<button onclick='clickSubmit()'>Mod You Questions</button></div>";
     echo "</div>";
 
 
