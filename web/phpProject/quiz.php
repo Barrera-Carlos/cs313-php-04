@@ -63,8 +63,8 @@ catch (PODException $ex){
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"quiz.php\" method='post'>";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='inputAnswer'>";
-    echo "<input type='text' name='inputQuestion'>";
+    echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='inputQuestion'>";
+    echo "<input type='text' name='inputAnswer'>";
     echo "</div>";
     echo "</div>";
     echo "<div class=\"row\">";
