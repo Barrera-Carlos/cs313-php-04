@@ -64,7 +64,10 @@ catch (PODException $ex){
                 echo $questionString." ".$answerString."</br>";
                 foreach ($db->query($questionString) as $question)
                     foreach ($db->query($answerString) as $answer){
-                        echo $question['question'].' '.$answer['answer']."</br>";
+                        #echo $question['question'].' '.$answer['answer']."</br>";
+                        echo "<div>";
+                        echo "<div class=\"col-sm-12\"><input type='submit' value='".$question['question'].' '.$answer['answer']."' name='bundle'></div>";
+                        echo "</div>";
                     }
             }
 
