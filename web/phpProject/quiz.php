@@ -63,6 +63,7 @@ catch (PODException $ex){
             foreach ($db->query($duplicateQuestions) as $value){
                 if($value['question'] == $_POST['inputQuestion']){
                     $questionIdentifier += 1;
+                    echo $value['question']."</br>";
                 }
             }
             $question = $_POST['inputQuestion']."(".$questionIdentifier.")";
@@ -70,6 +71,7 @@ catch (PODException $ex){
             foreach ($db->query($duplicateAnswers) as $value){
                 if ($value['answer'] == $_POST['inputAnswer']){
                     $answerIdentifier += 1;
+                    echo $value['answer'];
                 }
             }
             $answer = $_POST['inputAnswer']."(".$answerIdentifier.")";
