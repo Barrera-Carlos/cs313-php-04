@@ -64,7 +64,7 @@ catch (PODException $ex){
             $duplicateQuestions = "SELECT * FROM questions WHERE question=".$_POST['inputQuestion'];
             $duplicateAnswers = "SELECT * FROM answer WHERE answer=".$_POST['inputAnswer'];
             foreach ($db->query($duplicateQuestions) as $value){
-                if($value['question'] = $question){
+                if($value['question'] == $question){
                     echo $question;
                 }
             }
