@@ -104,7 +104,13 @@ catch (PODException $ex){
             if(isset($_POST['question'])){
                 $c= count($_POST['question']);
                 for ($x=0; $x < $c; $x++){
-                    echo $_POST['question'][$x];
+                    $questionIdString = "SELECT id FROM questions WHERE question='".$_POST['question'][$x]."'";
+                    foreach ($db->query($questionIdString) as $item){
+                        $delete1 = "DELETE FROM bundle_questions WHERE question_id=".$item['id'];
+                        $delete2 = "DELETE FROM question_answers WHERE question_id=".$item['id'];
+                        $delete3 = "DELETE FROM questions WHERE id=".$item['id'];
+                        $delete4 = "DELETE FROM answer WHERE id=".$item['id'];
+                    }
                 }
             }
             if(isset($_POST['answer'])){
