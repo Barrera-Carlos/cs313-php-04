@@ -48,7 +48,7 @@ catch (PODException $ex){
         if (isset($_POST['question']) or isset($_POST['answer'])){
             if (isset($_POST['question']) and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
                 $size = sizeof($_POST['question']);
-                for ($x=0; $X < $size; $x++){
+                for ($x=0; $x< $size; $x++){
                     $updateQuestionString = "UPDATE public.questions SET question ='".$_POST['inputQuestion']."' WHERE id=".$_POST['question'][$x];
                     echo $updateQuestionString."</br>";
                     $db->query($updateQuestionString);
@@ -56,7 +56,7 @@ catch (PODException $ex){
             }
             if (isset($_POST['answer']) and (isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']))){
                 $size = sizeof($_POST['answer']);
-                for ($x=0; $X < $size; $x++){
+                for ($x=0; $x< $size; $x++){
                     $updateAnswerString = "UPDATE public.answer SET answer ='".$_POST['inputAnswer']."' WHERE id=".$_POST['answer'][$x];
                     echo $updateAnswerString."</br>";
                     $db->query($updateAnswerString);
