@@ -40,6 +40,10 @@ catch (PODException $ex){
         function clickSubmit() {
             document.getElementById('mainFormSubmit').click();
         }
+        function changeSubmit() {
+            document.getElementById("submit").action = "flashCardQuiz";
+            document.getElementById('mainFormSubmit').click();
+        }
     </script>
 </head>
 <body>
@@ -121,7 +125,7 @@ catch (PODException $ex){
 
 
     echo "<div class=\"container\" id='inputContainer'>";
-    echo "<form action=\"quiz.php\" method='post'>";
+    echo "<form action=\"quiz.php\" method='post' id='submit'>";
     echo "<div class=\"row\">";
     echo "<div class=\"col-sm-12\" id='inputRow'><input type='text' name='inputQuestion'>";
     echo "<input type='text' name='inputAnswer'>";
@@ -159,5 +163,7 @@ catch (PODException $ex){
     }
 
 ?>
+
+<button onclick="changeSubmit()">Take Quiz</button>
 </body>
 </html>
