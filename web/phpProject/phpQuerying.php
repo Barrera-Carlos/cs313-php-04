@@ -155,7 +155,7 @@ else{
             array_push($subjectIdArray,(int)$id["id"]);
         }
 
-        /*if(empty($answerIdArray)){
+        if(empty($answerIdArray)){
             echo"<h1>No answers to delete</h1>";
         }else{
             foreach ($answerIdArray as $value){
@@ -196,7 +196,7 @@ else{
             $db->query($deleteSubject);
             echo $deleteUserSubject."</br>";
             echo $deleteSubject;
-        }*/
+        }
 
 
     }
