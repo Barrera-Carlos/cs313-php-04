@@ -47,11 +47,13 @@
     $answerArray = array();
 
     $bundleId = $_SESSION['bundleId'];
-    echo $bundleId;
     $questionSelectString = "SELECT question_id FROM bundle_questions WHERE bundle_id=".$bundleId;
     foreach ($db->query($questionSelectString) as $questionId){
+
         $answer = "SELECT answer FROM answer WHERE id =".$questionId['question_id'];
         $question = "SELECT question FROM question WHERE id =".$questionId['question_id'];
+        echo $answer;
+        echo $question;
         foreach ($db->query($question) as $item){
             array_push($questionArray, $item['question']);
 
@@ -62,7 +64,7 @@
         }
     }
         foreach ($questionArray as $item){
-           
+
         }
 
     ?>
