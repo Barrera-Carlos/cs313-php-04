@@ -54,12 +54,12 @@ catch (PODException $ex){
                 $usernameJSON = json_encode($userName);
             ?>
 
-            var usernames = JSON.parse('<?php echo $usernameJSON;?>')
+            var username = JSON.parse('<?php echo $usernameJSON;?>')
             var nameExist = false;
-            if(Array.isArray(usernames)){
-                var x = usernames.length;
+            if(Array.isArray(username)){
+                var x = username.length;
                 for (var i = 0; i < x; i++){
-                    if(usernames[i] === usernameValue)
+                    if(username[i] === usernameValue)
                         nameExist = true;
                 }
             }
@@ -79,7 +79,7 @@ catch (PODException $ex){
 </head>
 <body>
 <div class="container">
-    <form action="inputUserInformation.php" method="post" id="myForm">
+    <form action="" method="post" id="myForm">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">Username <br><input type="text" name="username"><br></div>
