@@ -41,7 +41,7 @@ catch (PODException $ex){
             document.getElementById('mainFormSubmit').click();
         }
         function changeSubmit() {
-            document.getElementById("submit").action = "flashCardQuiz";
+            document.getElementById("submit").action = "flashCardQuiz.php";
             document.getElementById('mainFormSubmit').click();
         }
     </script>
