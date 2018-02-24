@@ -78,7 +78,7 @@
         var clickCount = 0;
         function clickIt() {
             clickCount += 1;
-            if((clickCount += 1) <= displayArray.length)
+            if(clickCount < displayArray.length)
                 document.getElementById('questionDisplay').innerHTML = displayArray[clickCount];
 
         }
