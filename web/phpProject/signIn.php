@@ -73,7 +73,7 @@ catch (PODException $ex){
 </head>
 <body>
 <div class="container">
-    <form action="inputUserInformation.php" method="post" id="myForm">
+    <form action="" method="post" id="myForm">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">Username <br><input type="text" name="username"><br></div>
