@@ -47,13 +47,13 @@ catch (PODException $ex){
     if((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer'])) or (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
         if (isset($_POST['question']) or isset($_POST['answer'])){
             if (isset($_POST['question']) and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
-                $updateQuestionString = "UPDATE public.questions SET question ='".$_POST['inputQuestion']."' WHERE id='".$_POST['question']."'";
+                $updateQuestionString = "UPDATE public.questions SET question ='".$_POST['inputQuestion']."' WHERE id=".$_POST['question'];
                 foreach ($_POST['question'] as $item){
                     $db->query($updateQuestionString);
                 }
             }
             if (isset($_POST['answer']) and (isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']))){
-                $updateQuestionString = "UPDATE public.answer SET answer ='".$_POST['inputAnswer']."' WHERE id='".$_POST['answer']."'";
+                $updateQuestionString = "UPDATE public.answer SET answer ='".$_POST['inputAnswer']."' WHERE id=".$_POST['answer'];
                 foreach ($_POST['answer'] as $item){
                     $db->query($updateQuestionString);
                 }
