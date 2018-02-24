@@ -59,7 +59,7 @@
         }
     }
         foreach ($questionArray as $item){
-            echo $item."</br>";
+            echo " the array exist</br>";
         }
 
     ?>
