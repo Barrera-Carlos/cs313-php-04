@@ -81,6 +81,7 @@ catch (PODException $ex){
             if(isset($_POST['question'])){
                 $c= count($_POST['question']);
                 for ($x=0; $x < $c; $x++){
+                    echo $_POST['question'][$x].'</br>';
                         $delete1 = "DELETE FROM bundle_questions WHERE question_id=".$_POST['question'][$x];
                         $delete2 = "DELETE FROM question_answers WHERE question_id=".$_POST['question'][$x];
                         $delete3 = "DELETE FROM questions WHERE id=".$_POST['question'][$x];
