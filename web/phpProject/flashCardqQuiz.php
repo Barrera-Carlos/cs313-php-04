@@ -47,21 +47,22 @@
     $answerArray = array();
 
     $bundleId = $_SESSION['bundleId'];
+    echo $bundleId;
     $questionSelectString = "SELECT question_id FROM bundle_questions WHERE bundle_id=".$bundleId;
     foreach ($db->query($questionSelectString) as $questionId){
         $answer = "SELECT answer FROM answer WHERE id =".$questionId['question_id'];
         $question = "SELECT question FROM question WHERE id =".$questionId['question_id'];
         foreach ($db->query($question) as $item){
             array_push($questionArray, $item['question']);
-            echo "1</br>";
+
         }
         foreach ($db->query($answer) as $item){
             array_push($answerArray,$item['answer']);
-            echo "2</br>";
+
         }
     }
         foreach ($questionArray as $item){
-            echo " the array exist</br>";
+           
         }
 
     ?>
