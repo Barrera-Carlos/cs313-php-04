@@ -67,12 +67,6 @@ catch (PODException $ex){
             if (!nameExist ){
                 //document.getElementById("myForm").submit();
             }
-            else{
-                if(nameExist)
-                    alert('Username selected is take');
-                else
-                    alert('The form was not filled in')
-            }
 
         }
     </script>
