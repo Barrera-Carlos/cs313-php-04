@@ -51,7 +51,7 @@
     foreach ($db->query($questionSelectString) as $questionId){
 
         $answer = "SELECT answer FROM answer WHERE id =".$questionId['question_id'];
-        $question = "SELECT question FROM question WHERE id =".$questionId['question_id'];
+        $question = "SELECT question FROM questions WHERE id =".$questionId['question_id'];
 
         foreach ($db->query($question) as $item){
             #echo $item['question']."</br>";
