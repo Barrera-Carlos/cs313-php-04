@@ -64,8 +64,16 @@ catch (PODException $ex){
                 }
             }
 
-            if (!nameExist ){
-                //document.getElementById("myForm").submit();
+            if (!nameExist && usernameValue.length && pswValue.length && dNameValue.length){
+                document.getElementById("myForm").action = "inputUserInformation.php";
+                document.getElementById("myForm").submit();
+            }
+            else{
+                if (nameExist){
+                    alert("username all ready exist");
+                }
+                else
+                    alert("form was not complete");
             }
 
         }
