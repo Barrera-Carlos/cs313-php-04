@@ -64,16 +64,22 @@ catch (PODException $ex){
                 }
             }
 
-            if (!nameExist && pswValue.length && dNameValue.length)
-                alert('you filled in everithing and thers no duplicate');
-            else
-                alert('you did not fill evrething in or their is a duplicate');
+            if (!nameExist && pswValue.length && dNameValue.length && usernameValue.length){
+                document.getElementById("myForm").submit();
+            }
+            else{
+                if(nameExist)
+                    alert('Username selected is take');
+                else
+                    alert('The form was not filled in')
+            }
+
         }
     </script>
 </head>
 <body>
 <div class="container">
-    <form action="" method="post">
+    <form action="inputUserInformation.php" method="post" id="myForm">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">Username <br><input type="text" name="username"><br></div>
