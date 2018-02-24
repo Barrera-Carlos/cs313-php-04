@@ -64,20 +64,20 @@
     <div id="questionDisplay"></div>
 
     <script>
-        var myObj = '';
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                myObj = JSON.parse(this.responseText);
+                var myObj = JSON.parse(this.responseText);
+                var arraySize = myObj.length;
+                for (var i = 0; i < arraySize; i++){
+                    document.getElementById("questionDisplay").innerHTML = myObj[i];
+                }
             }
         };
         xmlhttp.open("GET", "flashCardqQuiz.php", true);
         xmlhttp.send();
 
-        var arraySize = myObj.length;
-        for (var i = 0; i < arraySize; i++){
-            document.getElementById("questionDisplay").innerHTML = myObj[i];
-        }
+
     </script>
 </body>
 </html>
