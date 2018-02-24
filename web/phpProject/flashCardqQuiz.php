@@ -36,9 +36,6 @@
     <title>Title</title>
     <style>
     </style>
-    <script>
-
-    </script>
 </head>
 <body>
     <?php
@@ -61,10 +58,26 @@
         }
     }
 
-    foreach ($questionArray as $item){
-        echo $item;
-    }
-
+    $questionJSON = json_encode($question);
+    $answerJSON = json_encode($answer);
     ?>
+    <div id="questionDisplay"></div>
+
+    <script>
+        var myObj = '';
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+            }
+        };
+        xmlhttp.open("GET", "demo_file_array.php", true);
+        xmlhttp.send();
+
+        var arraySize = myObj.length;
+        for (var i = 0; i < arraySize; i++){
+            document.getElementById("questionDisplay").innerHTML = myObj[i];
+        }
+    </script>
 </body>
 </html>
