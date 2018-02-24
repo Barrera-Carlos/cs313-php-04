@@ -52,13 +52,15 @@
 
         $answer = "SELECT answer FROM answer WHERE id =".$questionId['question_id'];
         $question = "SELECT question FROM question WHERE id =".$questionId['question_id'];
-        echo $answer;
+
         echo $question;
         foreach ($db->query($question) as $item){
+            echo $item['question']."</br>";
             array_push($questionArray, $item['question']);
 
         }
         foreach ($db->query($answer) as $item){
+            echo $item['answer']."</br>";
             array_push($answerArray,$item['answer']);
 
         }
