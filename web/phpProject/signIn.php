@@ -64,7 +64,7 @@ catch (PODException $ex){
                 }
             }
 
-            if (!nameExist && pswValue.length && dNameValue.length && usernameValue.length){
+            if (!nameExist){
                 document.getElementById("myForm").submit();
             }
             else{
