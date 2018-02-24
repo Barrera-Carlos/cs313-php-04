@@ -76,8 +76,7 @@ catch (PODException $ex){
     }
     else{
         if(isset($_POST['question']) or isset($_POST['answer'])){
-            $questionIdArray = array();
-            $answerIdArray = array();
+
             if(isset($_POST['question'])){
                 $c= count($_POST['question']);
                 for ($x=0; $x < $c; $x++){
@@ -97,17 +96,16 @@ catch (PODException $ex){
             if(isset($_POST['answer'])){
                 $c= count($_POST['answer']);
                 for ($x=0; $x < $c; $x++){
-                    $answerIdString = "SELECT id FROM answer WHERE answer='".$_POST['answer'][$x]."'";
-                    foreach ($db->query($answerIdString) as $item){
-                        $delete1 = "DELETE FROM bundle_questions WHERE question_id=".$item['id'];
-                        $delete2 = "DELETE FROM question_answers WHERE question_id=".$item['id'];
-                        $delete3 = "DELETE FROM questions WHERE id=".$item['id'];
-                        $delete4 = "DELETE FROM answer WHERE id=".$item['id'];
+                        echo $_POST['answer'][$x].'</br>';
+                        $delete1 = "DELETE FROM bundle_questions WHERE question_id=".$_POST['answer'][$x];
+                        $delete2 = "DELETE FROM question_answers WHERE question_id=".$_POST['answer'][$x];
+                        $delete3 = "DELETE FROM questions WHERE id=".$_POST['answer'][$x];
+                        $delete4 = "DELETE FROM answer WHERE id=".$_POST['answer'][$x];
                         $db->query($delete1);
                         $db->query($delete2);
                         $db->query($delete3);
                         $db->query($delete4);
-                    }
+
                 }
             }
         }
