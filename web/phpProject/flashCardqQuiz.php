@@ -52,6 +52,7 @@
 
         foreach ($db->query($question) as $item){
             array_push($questionArray, $item['question']);
+            echo $item['question']."<br>";
         }
         foreach ($db->query($answer) as $item){
             array_push($answerArray,$item['answer']);
@@ -64,12 +65,10 @@
     <div id="questionDisplay"></div>
 
     <script type="text/javascript">
-        var count = 1;
         var questions = JSON.parse('<?php echo $questionJSON;?>')
         var questionL = questions.length;
         for (var i = 0 ; i < questionL; i++){
-            //document.getElementById("questionDisplay").innerHTML = questions[i];
-            count++;
+            document.getElementById("questionDisplay").innerHTML = questions[i];
         }
     </script>
 </body>
