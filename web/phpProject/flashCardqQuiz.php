@@ -59,8 +59,8 @@
         }
     }
 
-    $questionJSON = json_encode($question);
-    $answerJSON = json_encode($answer);
+    $questionJSON = json_encode($questionArray);
+    $answerJSON = json_encode($answerArray);
     ?>
     <div id="questionDisplay"></div>
 
