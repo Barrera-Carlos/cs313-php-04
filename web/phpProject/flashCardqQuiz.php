@@ -63,21 +63,12 @@
     ?>
     <div id="questionDisplay"></div>
 
-    <script>
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var myObj = JSON.parse(this.responseText);
-                var arraySize = myObj.length;
-                for (var i = 0; i < arraySize; i++){
-                    document.getElementById("questionDisplay").innerHTML = myObj[i];
-                }
-            }
-        };
-        xmlhttp.open("GET", "flashCardqQuiz.php", true);
-        xmlhttp.send();
-
-
+    <script type="text/javascript">
+        var questions = JSON.parse('<?php echo $questionJSON;?>')
+        var questionL = questions.length;
+        for (var i = 0 ; i < questionL; i++){
+            document.getElementById("questionDisplay").innerHTML = questions[i];
+        }
     </script>
 </body>
 </html>
