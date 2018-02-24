@@ -53,9 +53,11 @@
         $question = "SELECT question FROM question WHERE id =".$questionId['question_id'];
         foreach ($db->query($question) as $item){
             array_push($questionArray, $item['question']);
+            echo "1</br>";
         }
         foreach ($db->query($answer) as $item){
             array_push($answerArray,$item['answer']);
+            echo "2</br>";
         }
     }
         foreach ($questionArray as $item){
