@@ -54,41 +54,18 @@ catch (PODException $ex){
             }
         }
         elseif ((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']))and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
-            $questionIdentifier = 1;
-            $answerIdentifier = 1;
 
-            $duplicateQuestions = "SELECT * FROM questions WHERE question='".$_POST['inputQuestion']."'";
-            $duplicateAnswers = "SELECT * FROM answer WHERE answer='".$_POST['inputAnswer']."'";
 
-            foreach ($db->query($duplicateQuestions) as $value){
-                if($value['question'] == $_POST['inputQuestion']){
-                    $questionIdentifier += 1;
-                }
-            }
-            if($questionIdentifier > 1){
-                $question = $_POST['inputQuestion']."(".$questionIdentifier.")";
-            }
-            else
-                $question = $_POST['inputQuestion'];
-
-            foreach ($db->query($duplicateAnswers) as $value){
-                if ($value['answer'] == $_POST['inputAnswer']){
-                    $answerIdentifier += 1;
-                }
-            }
-            if ($answerIdentifier > 1){
-                $answer = $_POST['inputAnswer']."(".$answerIdentifier.")";
-            }
-            else
-                $answer = $_POST['inputAnswer'];
+            $question = $_POST['inputQuestion'];
+            $answer = $_POST['inputAnswer'];
 
             $questionInsertString = "INSERT INTO questions (question) VALUES ('".$question."')";
             $answerInsertString = "INSERT INTO answer (answer) VALUES ('".$answer."')";
 
             $db->query($questionInsertString);
             $db->query($answerInsertString);
-            (int)$questionId = $db->lastInsertId('questions_id_seq');
-            (int)$answerId = $db->lastInsertId('answer_id_seq');
+            $questionId = $db->lastInsertId('questions_id_seq');
+            $answerId = $db->lastInsertId('answer_id_seq');
 
             $insertQuestionId = "INSERT INTO bundle_questions(bundle_id,question_id) VALUES (".$_SESSION['bundleId'].','.$questionId.")";
             $insertAnswerId = "INSERT INTO question_answers(question_id,answer_id) VALUE (".$questionId.",".$answerId.")";
@@ -159,12 +136,12 @@ catch (PODException $ex){
             $_SESSION['bundleId'] = $bundleId['id'];
             $questionSelectString = "SELECT question_id FROM bundle_questions WHERE bundle_id=".$bundleId['id'];
             foreach ($db->query($questionSelectString) as $questionId){
-                $questionString = "SELECT question FROM questions WHERE id =".$questionId['question_id'];
-                $answerString = "SELECT answer FROM answer WHERE id =".$questionId['question_id'];
+                $questionString = "SELECT * FROM questions WHERE id =".$questionId['question_id'];
+                $answerString = "SELECT * FROM answer WHERE id =".$questionId['question_id'];
                 foreach ($db->query($questionString) as $question)
                     foreach ($db->query($answerString) as $answer){
-                        $questionValue = $question['question'];
-                        $answerValue = $answer['answer'];
+                        $questionValue = $question['id'];
+                        $answerValue = $answer['id'];
                         echo "<div class='row'>";
                         echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$questionValue."' name='question[]'>".$question['question']."</div>";
                         echo "<div class=\"col-sm-6\"><input type='checkbox' value='".$answerValue."' name='answer[]'>".$answer['answer']."</div>";
