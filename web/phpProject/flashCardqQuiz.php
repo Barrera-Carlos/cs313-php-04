@@ -71,7 +71,7 @@
                 myObj = JSON.parse(this.responseText);
             }
         };
-        xmlhttp.open("GET", "demo_file_array.php", true);
+        xmlhttp.open("GET", "flashCardqQuiz.php", true);
         xmlhttp.send();
 
         var arraySize = myObj.length;
