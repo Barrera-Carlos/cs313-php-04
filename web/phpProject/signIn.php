@@ -65,7 +65,7 @@ catch (PODException $ex){
             }
 
             if (!nameExist){
-                document.getElementById("myForm").submit();
+                //document.getElementById("myForm").submit();
             }
             else{
                 if(nameExist)
