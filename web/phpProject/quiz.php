@@ -47,10 +47,16 @@ catch (PODException $ex){
     if((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer'])) or (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
         if (isset($_POST['question']) or isset($_POST['answer'])){
             if (isset($_POST['question']) and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
-                echo "a question wants to be updated";
+                $updateQuestionString = "UPDATE public.questions SET question ='".$_POST['inputQuestion']."' WHERE id='".$_POST['question']."'";
+                foreach ($_POST['question'] as $item){
+                    $db->query($updateQuestionString);
+                }
             }
             if (isset($_POST['answer']) and (isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']))){
-                echo "a answer wants to be updated";
+                $updateQuestionString = "UPDATE public.answer SET answer ='".$_POST['inputAnswer']."' WHERE id='".$_POST['answer']."'";
+                foreach ($_POST['answer'] as $item){
+                    $db->query($updateQuestionString);
+                }
             }
         }
         elseif ((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer']))and (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
@@ -80,7 +86,6 @@ catch (PODException $ex){
             if(isset($_POST['question'])){
                 $c= count($_POST['question']);
                 for ($x=0; $x < $c; $x++){
-                    echo $_POST['question'][$x].'</br>';
                         $delete1 = "DELETE FROM bundle_questions WHERE question_id=".$_POST['question'][$x];
                         $delete2 = "DELETE FROM question_answers WHERE question_id=".$_POST['question'][$x];
                         $delete3 = "DELETE FROM questions WHERE id=".$_POST['question'][$x];
@@ -96,7 +101,6 @@ catch (PODException $ex){
             if(isset($_POST['answer'])){
                 $c= count($_POST['answer']);
                 for ($x=0; $x < $c; $x++){
-                        echo $_POST['answer'][$x].'</br>';
                         $delete1 = "DELETE FROM bundle_questions WHERE question_id=".$_POST['answer'][$x];
                         $delete2 = "DELETE FROM question_answers WHERE question_id=".$_POST['answer'][$x];
                         $delete3 = "DELETE FROM questions WHERE id=".$_POST['answer'][$x];
