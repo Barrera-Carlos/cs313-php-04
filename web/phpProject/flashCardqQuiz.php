@@ -74,14 +74,17 @@
         }
 
         document.getElementById('questionDisplay').innerHTML = displayArray[0];
-        /*var clickCount = 1;
+
+        var clickCount = 0;
         function clickIt() {
             document.getElementById('questionDisplay').innerHTML = displayArray[clickCount];
-            if(clickCount < displayArray.length)
+            if(clickCount < displayArray.length) {
+                document.getElementById('questionDisplay').innerHTML = displayArray[clickCount];
                 clickCount++;
+            }
             else
                 //send them back to the first page or reset quiz
-        }*/
+        }
     </script>
 </body>
 </html>
