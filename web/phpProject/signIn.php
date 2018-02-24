@@ -93,7 +93,7 @@ catch (PODException $ex){
         </div>
         <div class="row">
             <div class="col-sm-4"></div>
-            <div class="col-sm-4">Password <br><input type="password" name="dName"><br></div>
+            <div class="col-sm-4">DisplayName<br><input type="text" name="dName"><br></div>
             <div class="col-sm-4"></div>
         </div>
         <div class="row">
