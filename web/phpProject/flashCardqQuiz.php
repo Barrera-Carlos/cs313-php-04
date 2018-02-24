@@ -64,10 +64,12 @@
     <div id="questionDisplay"></div>
 
     <script type="text/javascript">
+        var count = 1;
         var questions = JSON.parse('<?php echo $questionJSON;?>')
         var questionL = questions.length;
         for (var i = 0 ; i < questionL; i++){
-            document.getElementById("questionDisplay").innerHTML = questions[i];
+            //document.getElementById("questionDisplay").innerHTML = questions[i];
+            count++;
         }
     </script>
 </body>
