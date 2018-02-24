@@ -26,4 +26,5 @@
 
     $psw = password_hash($_POST['psw'], PASSWORD_DEFAULT);
     $subString = "INSERT INTO public.user (username,password,display_name) VALUES('".$_POST['username']."','".$psw."','".$_POST['dName']."')";
-    $db->query($subString);
+    if(!empty($psw) or $psw != false)
+        $db->query($subString);
