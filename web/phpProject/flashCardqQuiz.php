@@ -52,7 +52,6 @@
 
         foreach ($db->query($question) as $item){
             array_push($questionArray, $item['question']);
-            echo $item['question']."<br>";
         }
         foreach ($db->query($answer) as $item){
             array_push($answerArray,$item['answer']);
@@ -62,13 +61,26 @@
     $questionJSON = json_encode($questionArray);
     $answerJSON = json_encode($answerArray);
     ?>
-    <div id="questionDisplay"></div>
+    <div id="questionDisplay" onclick="clickIt()"></div>
 
     <script type="text/javascript">
-        var questions = JSON.parse('<?php echo $questionJSON;?>')
-        var questionL = questions.length;
-        for (var i = 0 ; i < questionL; i++){
-            document.getElementById("questionDisplay").innerHTML = questions[i];
+        var questions = JSON.parse('<?php echo $questionJSON;?>');
+        var answers = JSON.parse('<?php echo $answerJSON;?>');
+        var displayArray = [];
+        var length = questions.length;
+        for (var i = 0 ; i < length; i++){
+            displayArray.push(questions[i]);
+            displayArray.push(answers[i]);
+        }
+
+        document.getElementById('questionDisplay').innerHTML = displayArray[0];
+        var clickCount = 1;
+        function clickIt() {
+            document.getElementById('questionDisplay').innerHTML = displayArray[clickCount];
+            if(clickCount < displayArray.length)
+                clickCount++;
+            else
+                //send them back to the first page or reset quiz
         }
     </script>
 </body>
