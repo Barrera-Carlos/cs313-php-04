@@ -144,6 +144,7 @@ else{
                     foreach ($db->query($removeItemScript) as $removeQuestion){
                         $removeAnswerScript = "SELECT answer_id FROM public.question_answers WHERE answer_id =".$removeQuestion['question_id'];
                         foreach ($db->query($removeAnswerScript) as $removeAnswer){
+                            echo $removeAnswer["answer_id"]."</br>";
                             array_push($answerIdArray,(int)$removeAnswer["answer_id"]);
                         }
                         array_push($questionIdArray,(int)$removeQuestion['question_id']);
@@ -154,7 +155,7 @@ else{
             array_push($subjectIdArray,(int)$id["id"]);
         }
 
-        if(empty($answerIdArray)){
+        /*if(empty($answerIdArray)){
             echo"<h1>No answers to delete</h1>";
         }else{
             foreach ($answerIdArray as $value){
@@ -195,9 +196,8 @@ else{
             $db->query($deleteSubject);
             echo $deleteUserSubject."</br>";
             echo $deleteSubject;
-        }
-        $questionId = "";
-        $answerId = "";
+        }*/
+
 
     }
 
@@ -215,8 +215,6 @@ else{
 
         }
     }
-    #else
-     #   echo "<h1>We Did not make it boss</h1>";
 
     echo "<div class=\"container\" id='inputContainer'>";
     echo "<form action=\"phpQuerying.php\" method='post'>";
