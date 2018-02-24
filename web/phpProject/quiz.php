@@ -81,19 +81,16 @@ catch (PODException $ex){
             if(isset($_POST['question'])){
                 $c= count($_POST['question']);
                 for ($x=0; $x < $c; $x++){
-                    $questionIdString = "SELECT id FROM questions WHERE question='".$_POST['question'][$x]."'";
-                    foreach ($db->query($questionIdString) as $item){
-                        array_push($questionIdArray,$item['id']);
-                        $delete1 = "DELETE FROM bundle_questions WHERE question_id=".$item['id'];
-                        $delete2 = "DELETE FROM question_answers WHERE question_id=".$item['id'];
-                        $delete3 = "DELETE FROM questions WHERE id=".$item['id'];
-                        $delete4 = "DELETE FROM answer WHERE id=".$item['id'];
+                        $delete1 = "DELETE FROM bundle_questions WHERE question_id=".$_POST['question'][$x];
+                        $delete2 = "DELETE FROM question_answers WHERE question_id=".$_POST['question'][$x];
+                        $delete3 = "DELETE FROM questions WHERE id=".$_POST['question'][$x];
+                        $delete4 = "DELETE FROM answer WHERE id=".$_POST['question'][$x];
                         $db->query($delete1);
                         $db->query($delete2);
                         $db->query($delete3);
                         $db->query($delete4);
 
-                    }
+
                 }
             }
             if(isset($_POST['answer'])){
@@ -101,7 +98,6 @@ catch (PODException $ex){
                 for ($x=0; $x < $c; $x++){
                     $answerIdString = "SELECT id FROM answer WHERE answer='".$_POST['answer'][$x]."'";
                     foreach ($db->query($answerIdString) as $item){
-                        array_push($answerIdArray,$item['id']);
                         $delete1 = "DELETE FROM bundle_questions WHERE question_id=".$item['id'];
                         $delete2 = "DELETE FROM question_answers WHERE question_id=".$item['id'];
                         $delete3 = "DELETE FROM questions WHERE id=".$item['id'];
