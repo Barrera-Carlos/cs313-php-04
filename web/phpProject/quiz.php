@@ -83,6 +83,7 @@ catch (PODException $ex){
 
             $insertQuestionId = "INSERT INTO bundle_questions(bundle_id,question_id) VALUES (".$_SESSION['bundleId'].','.$questionId.")";
             $insertAnswerId = "INSERT INTO question_answers(question_id,answer_id) VALUE (".$questionId.",".$answerId.")";
+            echo $insertAnswerId;
             $db->query($insertQuestionId);
             $db->query($insertAnswerId);
         }
