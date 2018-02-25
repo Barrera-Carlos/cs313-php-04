@@ -47,6 +47,17 @@ catch (PODException $ex){
     </script>
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Flash Quiz</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="phpQuerying.php">Subjects</a></li>
+            <li><a href="QuestionSelect.php">Question Bundle</a></li>
+        </ul>
+    </div>
+</nav>
 <?php
     if((isset($_POST['inputAnswer']) and !empty($_POST['inputAnswer'])) or (isset($_POST['inputQuestion']) and !empty($_POST['inputQuestion']))){
         if (isset($_POST['question']) or isset($_POST['answer'])){
