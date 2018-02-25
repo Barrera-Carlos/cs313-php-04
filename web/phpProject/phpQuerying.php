@@ -114,7 +114,7 @@ catch (PODException $ex){
 <?php
 
     $username = $_POST["username"];
-    $logInPsw = password_hash($_POST['psw'], PASSWORD_DEFAULT);
+    $logInPsw = $_POST['psw'];
     echo $logInPsw;
     $displayName = '';
     $sameUser = false;
@@ -126,9 +126,9 @@ if(array_key_exists('userId',$_SESSION) && !empty($_SESSION['userId'])){
 
 if(!$sameUser){
     foreach ($db->query('SELECT * FROM public.user') as $row){
-        if($row['username'] == $username and  $row['password'] == $logInPsw){
+        if($row['username'] == $username and  password_verify($logInPsw,$row['password'])){
             $_SESSION["userId"] = $row['id'];
-            $_SESSION['psw'] = $row['password'];
+            #$_SESSION['psw'] = $row['password'];
             $_SESSION["username"] = $row['username'];
             $_SESSION["displayname"] = $row['display_name'];
             $displayName = $row['display_name'];
