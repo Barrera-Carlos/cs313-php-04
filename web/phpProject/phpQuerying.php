@@ -81,11 +81,9 @@ catch (PODException $ex){
         function changeSubmit() {
             var itemCheck = false;
             var form = document.getElementById('form')
-            alert(form.length)
-            /*for (var i = 0; i < form.length; i++){
-                if(form.element[i].checked){
-                    itemCheck = true;
-                }
+
+            for (var i = 0; i < form.length; i++){
+                alert(form.element[0].value);
             }
             if (itemCheck)
                 form.action = "phpQuerying.php";*/
