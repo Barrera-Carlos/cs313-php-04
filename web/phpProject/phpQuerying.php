@@ -107,19 +107,21 @@ catch (PODException $ex){
             }
 
         }
-        function logOut() {
-            <?php
-            /*unset($_SESSION["userId"]);  // where $_SESSION["nome"] is your own variable. if you do not have one use only this as follow **session_unset();**
-            header("Location: logIn.php");*/
-            ?>
-            /*var form = document.getElementById('form');
-            form.action = "logIn.php";
-            document.getElementById('submitSubject').click();*/
-        }
+
     </script>
 </head>
 
 <body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Flash Quiz</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="phpQuerying.php">logOut</a></li>
+        </ul>
+    </div>
+</nav>
 <?php
 
     $username = $_POST["username"];
@@ -151,7 +153,7 @@ else{
 
     echo "<div class=\"container\" id='buttonContainer'>";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" id='inputRow'><button onclick='changeSubmit()'>Delete subject</button><button onclick='chooseItem()'>Choose Subject</button><button onclick='logOut()'>logOut</button> </div>";
+    echo "<div class=\"col-sm-12\" id='inputRow'><button onclick='changeSubmit()'>Delete subject</button><button onclick='chooseItem()'>Choose Subject</button></div>";
     echo "<input type='submit' style='display: none' id='submit'>";
     echo "</div>";
     echo "</div>";
