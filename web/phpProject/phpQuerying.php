@@ -83,7 +83,7 @@ catch (PODException $ex){
             var form = document.getElementById('form');
 
             for (var i = 0; i < form.length; i++){
-                alert(form.element[0].value);
+                alert(form.elements[0].value);
             }
             if (itemCheck)
                 form.action = "phpQuerying.php";
