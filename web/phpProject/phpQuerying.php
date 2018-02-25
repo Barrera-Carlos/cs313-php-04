@@ -83,7 +83,9 @@ catch (PODException $ex){
             var form = document.getElementById('form');
 
             for (var i = 0; i < form.length; i++){
-                alert(form.elements[0].value);
+                if(form.elements[i].checked){
+                    itemCheck = true;
+                }
             }
             if (itemCheck)
                 form.action = "phpQuerying.php";
@@ -93,15 +95,15 @@ catch (PODException $ex){
             var itemCheck = false;
             var form = document.getElementById('form');
             alert(form.length)
-            /*for (var i = 0; i < form.length; i++){
-                if(form.element[i].checked){
+            for (var i = 0; i < form.length; i++){
+                if(form.elements[i].checked){
                     itemCheck = true;
                 }
             }
             if (itemCheck){
                 form.action = "QuestionSelect.php";
                 form.getElementById("submit").click();
-            }*/
+            }
 
         }
     </script>
