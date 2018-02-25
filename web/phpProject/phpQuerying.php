@@ -115,7 +115,6 @@ catch (PODException $ex){
 
     $username = $_POST["username"];
     $logInPsw = $_POST['psw'];
-    echo $logInPsw;
     $displayName = '';
     $sameUser = false;
 
