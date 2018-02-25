@@ -107,6 +107,23 @@ catch (PODException $ex){
             }
 
         }
+        function logOut() {
+            <?php
+            if (ini_get("session.use_cookies")) {
+                $params = session_get_cookie_params();
+                setcookie(session_name(), '', time() - 42000,
+                    $params["path"], $params["domain"],
+                    $params["secure"], $params["httponly"]
+                );
+            }
+
+            // Finally, destroy the session.
+            session_destroy();
+            ?>
+            var form = document.getElementById('form');
+            form.action = "logIn.php";
+            document.getElementById('submitSubject').click();
+        }
     </script>
 </head>
 
@@ -142,7 +159,7 @@ else{
 
     echo "<div class=\"container\" id='buttonContainer'>";
     echo "<div class=\"row\">";
-    echo "<div class=\"col-sm-12\" id='inputRow'><button onclick='changeSubmit()'>Delete subject</button><button onclick='chooseItem()'>Choose Subject</button></div>";
+    echo "<div class=\"col-sm-12\" id='inputRow'><button onclick='changeSubmit()'>Delete subject</button><button onclick='chooseItem()'>Choose Subject</button><button onclick='logOut()'>logOut</button> </div>";
     echo "<input type='submit' style='display: none' id='submit'>";
     echo "</div>";
     echo "</div>";
