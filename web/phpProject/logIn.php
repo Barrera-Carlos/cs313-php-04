@@ -19,10 +19,23 @@
             margin-top: 20%;
         }
     </style>
+    <script>
+        function changeSubmit(id) {
+            if (id === 1){
+                document.getElementById('form').action = "phpQuerying.php";
+                document.getElementById('submit').click();
+            }
+            else if(id === 2){
+                document.getElementById('form').action = "signIn.php";
+                document.getElementById('submit').click();
+            }
+        }
+
+    </script>
 </head>
 <body>
 <div class="container">
-    <form action="phpQuerying.php" method="post">
+    <form action="phpQuerying.php" method="post" id="form">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">Username <br><input type="text" name="username"><br></div>
@@ -36,9 +49,10 @@
         </div>
         <div class="row">
             <div class="col-sm-4"></div>
-            <div class="col-sm-4"><input type="submit" value="Submit"><button onclick="window.location.href='signIn.php'">Sign up</button></div>
+            <div class="col-sm-4"><button onclick="changeSubmit(1)">Login</button><button onclick="changeSubmit(2)">Sign up</button></div>
             <div class="col-sm-4"></div>
         </div>
+        <input type="submit" style="display: none" id="submit">
     </form>
 </div>
 </body>
