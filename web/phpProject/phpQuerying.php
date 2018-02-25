@@ -87,8 +87,11 @@ catch (PODException $ex){
                     itemCheck = true;
                 }
             }
-            if (itemCheck)
+            if (itemCheck){
                 form.action = "phpQuerying.php";
+                form.click();
+            }
+
 
         }
         function chooseItem(){
@@ -102,7 +105,7 @@ catch (PODException $ex){
             }
             if (itemCheck){
                 form.action = "QuestionSelect.php";
-                form.getElementById("submit").click();
+                form..click();
             }
 
         }
