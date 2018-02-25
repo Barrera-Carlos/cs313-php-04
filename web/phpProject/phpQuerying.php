@@ -81,19 +81,21 @@ catch (PODException $ex){
         function changeSubmit() {
             var itemCheck = false;
             var form = document.getElementById('form')
-            for (var i = 0; i < form.length; i++){
+            alert(form.length)
+            /*for (var i = 0; i < form.length; i++){
                 if(form.element[i].checked){
                     itemCheck = true;
                 }
             }
             if (itemCheck)
-                form.action = "phpQuerying.php";
+                form.action = "phpQuerying.php";*/
 
         }
         function chooseItem(){
             var itemCheck = false;
             var form = document.getElementById('form')
-            for (var i = 0; i < form.length; i++){
+            alert(form.length)
+            /*for (var i = 0; i < form.length; i++){
                 if(form.element[i].checked){
                     itemCheck = true;
                 }
@@ -101,8 +103,8 @@ catch (PODException $ex){
             if (itemCheck){
                 form.action = "QuestionSelect.php";
                 form.getElementById("submit").click();
-            }
-            
+            }*/
+
         }
     </script>
 </head>
