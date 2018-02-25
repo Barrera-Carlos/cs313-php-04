@@ -105,7 +105,7 @@ catch (PODException $ex){
             }
             if (itemCheck){
                 form.action = "QuestionSelect.php";
-                form..click();
+                form.click();
             }
 
         }
