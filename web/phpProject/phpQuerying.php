@@ -72,7 +72,6 @@ catch (PODException $ex){
         }
     </style>
     <script>
-        var deleteSubject = false;
         function submitItem() {
             var input = document.getElementById('inputText').value;
             if(input.length > 0){
@@ -80,18 +79,35 @@ catch (PODException $ex){
             }
         }
         function changeSubmit() {
-            if(!deleteSubject){
-                document.getElementById("form").action = "phpQuerying.php";
+            var itemCheck = false;
+            var form = document.getElementById('form')
+            for (var i = 0; i < form.length; i++){
+                if(form.element[i].checked){
+                    itemCheck = true;
+                }
             }
-            else {
-                document.getElementById("form").action = "QuestionSelect.php";
+            if (itemCheck)
+                form.action = "phpQuerying.php";
+
+        }
+        function chooseItem(){
+            var itemCheck = false;
+            var form = document.getElementById('form')
+            for (var i = 0; i < form.length; i++){
+                if(form.element[i].checked){
+                    itemCheck = true;
+                }
             }
+            if (itemCheck){
+                form.action = "QuestionSelect.php";
+                form.getElementById("submit").click();
+            }
+            
         }
     </script>
 </head>
 
 <body>
-<script src="submitScript.js"></script>
 <?php
 
     $username = $_POST["username"];
@@ -126,7 +142,12 @@ if($displayName == ''){
 }
 else{
 
-    echo "<button onclick='changeSubmit()'>Delete subject</button>";
+    echo "<div class=\"container\" id='buttonContainer'>";
+    echo "<div class=\"row\">";
+    echo "<div class=\"col-sm-12\" id='inputRow'><button onclick='changeSubmit()'>Delete subject</button><button onclick='chooseItem()'>Choose Subject</button></div>";
+    echo "<input type='submit' style='display: none' id='submit'>";
+    echo "</div>";
+    echo "</div>";
 
     if(array_key_exists("subject",$_POST) && !empty($_POST["subject"][0])) {
 
@@ -135,9 +156,8 @@ else{
         $questionIdArray = array();
         $answerIdArray = array();
 
-        $subjectIdQ = "SELECT id FROM public.subject WHERE subject_name ='".$_POST["subject"][0]."'";
-        foreach ($db->query($subjectIdQ) as $id){
-            $bundleId = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id=".$id["id"];
+            array_push($subjectIdArray,$_POST["subject"][0]);
+            $bundleId = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id=".$_POST["subject"][0];
             if($db->query($bundleId) == true){
                 foreach ($db->query($bundleId) as $removeItem){
                     $removeItemScript = "SELECT question_id FROM public.bundle_questions WHERE bundle_id =".$removeItem["bundle_id"];
@@ -151,8 +171,8 @@ else{
                     array_push($bundleIdArray,(int)$removeItem["bundle_id"]);
                 }
             }
-            array_push($subjectIdArray,(int)$id["id"]);
-        }
+
+
 
         if(empty($answerIdArray)){
             echo"<h1>No answers to delete</h1>";
@@ -232,7 +252,6 @@ else{
        foreach ($db->query($sqlSubject) as $column){
            echo "<div class=\"row\">";
            echo "<div class=\"col-sm-12\" id='displayRow'><input type='checkbox' value=".$column["id"]." name='subject[]'>".$column["subject_name"]."</div>";
-           echo $column["id"];
            #echo "<div class=\"col-sm-12\" id='displayRow'><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
            #echo "<div class=\"col - sm - 12\" id='displayRow'><button onclick=\"changeSubmit()\">".$column["subject_name"]."<button onclick='changeSubmit()'>hex</button></button></div>";
            echo "</div>";
