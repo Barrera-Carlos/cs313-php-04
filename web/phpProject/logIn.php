@@ -36,7 +36,7 @@
         </div>
         <div class="row">
             <div class="col-sm-4"></div>
-            <div class="col-sm-4"><input type="submit" value="Submit"><button onclick="location.href='signIn.php';">Sign up</button></div>
+            <div class="col-sm-4"><input type="submit" value="Submit"><button onclick="window.location.href='signIn.php'">Sign up</button></div>
             <div class="col-sm-4"></div>
         </div>
     </form>
