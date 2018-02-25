@@ -28,3 +28,6 @@
     $subString = "INSERT INTO public.user (username,password,display_name) VALUES('".$_POST['username']."','".$psw."','".$_POST['dName']."')";
     if(!empty($psw) or $psw != false)
         $db->query($subString);
+
+    header("Location:logIn.php");
+    exit;
