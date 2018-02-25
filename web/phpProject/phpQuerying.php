@@ -80,7 +80,7 @@ catch (PODException $ex){
         }
         function changeSubmit() {
             var itemCheck = false;
-            var form = document.getElementById('form')
+            var form = document.getElementById('form');
 
             for (var i = 0; i < form.length; i++){
                 alert(form.element[0].value);
@@ -91,7 +91,7 @@ catch (PODException $ex){
         }
         function chooseItem(){
             var itemCheck = false;
-            var form = document.getElementById('form')
+            var form = document.getElementById('form');
             alert(form.length)
             /*for (var i = 0; i < form.length; i++){
                 if(form.element[i].checked){
