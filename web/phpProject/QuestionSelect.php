@@ -148,7 +148,7 @@ catch (PODException $ex){
     echo "<form action=\"quiz.php\" method='post' id='bundleSubmit'>";
     if(empty($_POST['subject']))
     {
-        $_POST['subject']=$_SESSION['subjectId'];
+        $_POST['subject'][0]=$_SESSION['subjectId'];
     }
                 $select = "SELECT bundle_id FROM public.subject_bundles WHERE subject_id =".$_POST['subject'][0];
                 $_SESSION['subjectId'] = $_POST['subject'][0];
