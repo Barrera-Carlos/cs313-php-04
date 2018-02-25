@@ -109,8 +109,8 @@ catch (PODException $ex){
         }
         function logOut() {
             <?php
-            unset($_SESSION["userId"]);  // where $_SESSION["nome"] is your own variable. if you do not have one use only this as follow **session_unset();**
-            header("Location: logIn.php");
+            /*unset($_SESSION["userId"]);  // where $_SESSION["nome"] is your own variable. if you do not have one use only this as follow **session_unset();**
+            header("Location: logIn.php");*/
             ?>
             /*var form = document.getElementById('form');
             form.action = "logIn.php";
