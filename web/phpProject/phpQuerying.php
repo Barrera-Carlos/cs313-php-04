@@ -114,18 +114,13 @@ catch (PODException $ex){
 <?php
 
     $username = $_POST["username"];
-    $logInPsw = $_POST["psw"];
+    $logInPsw = password_hash($_POST['psw'], PASSWORD_DEFAULT);
     $displayName = '';
     $sameUser = false;
 
 if(array_key_exists('userId',$_SESSION) && !empty($_SESSION['userId'])){
     $sameUser = true;
     $displayName = $_SESSION["displayname"];
-    /*if($username === $_SESSION['username'] && $logInPsw === $_SESSION['psw'])
-    {
-        $sameUser = true;
-        $displayName = $_SESSION["displayname"];
-    }*/
 }
 
 if(!$sameUser){
@@ -177,38 +172,29 @@ else{
 
 
 
-        if(empty($answerIdArray)){
-            echo"<h1>No answers to delete</h1>";
-        }else{
+        if(!empty($answerIdArray)){
             foreach ($answerIdArray as $value){
                 $deleteQuestionAnswers = "DELETE FROM public.question_answers WHERE answer_id=".$value;
                 $deleteAnswers = "DELETE FROM public.answer WHERE id=".$value;
                 $db->query($deleteQuestionAnswers);
                 $db->query($deleteAnswers);
-                #echo $deleteQuestionAnswers;
             }
 
         }
-        if(empty($questionIdArray)){
-            echo"<h1>No questions to delete</h1>";
-        }else{
+        if(!empty($questionIdArray)){
             foreach ($questionIdArray as $value){
                 $deleteBundleQuestions = "DELETE FROM public.bundle_questions WHERE question_id=".$value;
                 $deleteQuestions = "DELETE FROM public.questions WHERE id=".$value;
                 $db->query($deleteBundleQuestions);
                 $db->query($deleteQuestions);
-                #echo $deleteBundleQuestions;
             }
         }
-        if(empty($bundleIdArray)){
-            echo"<h1>No question bundles to delete</h1>";
-        }else{
+        if(!empty($bundleIdArray)){
             foreach ($bundleIdArray as $value){
                 $deleteSubjectBundle = "DELETE FROM public.subject_bundles WHERE bundle_id =".$value;
                 $deleteBundle = "DELETE FROM public.bundle_name WHERE id =".$value;
                 $db->query($deleteSubjectBundle);
                 $db->query($deleteBundle);
-                #echo $deleteSubjectBundle;
             }
         }
         if(!empty($subjectIdArray)){
@@ -216,8 +202,7 @@ else{
             $deleteSubject = "DELETE FROM public.subject WHERE id=".$subjectIdArray[0];
             $db->query($deleteUserSubject);
             $db->query($deleteSubject);
-            #echo $deleteUserSubject."</br>";
-            #echo $deleteSubject;
+
         }
 
 
@@ -233,7 +218,6 @@ else{
             (int)$userId = $_SESSION["userId"];
             $insertToUserSubjectName = "INSERT INTO public.user_subjects (user_id, subject_id) VALUES(".$userId.",".$newId.")";
             $db->query($insertToUserSubjectName);
-            echo $insertToUserSubjectName;
 
         }
     }
