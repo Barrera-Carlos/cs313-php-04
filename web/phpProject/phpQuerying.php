@@ -144,7 +144,6 @@ else{
                     foreach ($db->query($removeItemScript) as $removeQuestion){
                         $removeAnswerScript = "SELECT answer_id FROM public.question_answers WHERE answer_id =".$removeQuestion['question_id'];
                         foreach ($db->query($removeAnswerScript) as $removeAnswer){
-                            echo $removeAnswer["answer_id"]."</br>";
                             array_push($answerIdArray,(int)$removeAnswer["answer_id"]);
                         }
                         array_push($questionIdArray,(int)$removeQuestion['question_id']);
@@ -163,7 +162,7 @@ else{
                 $deleteAnswers = "DELETE FROM public.answer WHERE id=".$value;
                 $db->query($deleteQuestionAnswers);
                 $db->query($deleteAnswers);
-                echo $deleteQuestionAnswers;
+                #echo $deleteQuestionAnswers;
             }
 
         }
@@ -175,7 +174,7 @@ else{
                 $deleteQuestions = "DELETE FROM public.questions WHERE id=".$value;
                 $db->query($deleteBundleQuestions);
                 $db->query($deleteQuestions);
-                echo $deleteBundleQuestions;
+                #echo $deleteBundleQuestions;
             }
         }
         if(empty($bundleIdArray)){
@@ -186,7 +185,7 @@ else{
                 $deleteBundle = "DELETE FROM public.bundle_name WHERE id =".$value;
                 $db->query($deleteSubjectBundle);
                 $db->query($deleteBundle);
-                echo $deleteSubjectBundle;
+                #echo $deleteSubjectBundle;
             }
         }
         if(!empty($subjectIdArray)){
@@ -194,8 +193,8 @@ else{
             $deleteSubject = "DELETE FROM public.subject WHERE id=".$subjectIdArray[0];
             $db->query($deleteUserSubject);
             $db->query($deleteSubject);
-            echo $deleteUserSubject."</br>";
-            echo $deleteSubject;
+            #echo $deleteUserSubject."</br>";
+            #echo $deleteSubject;
         }
 
 
@@ -229,10 +228,12 @@ else{
     echo "<form action='QuestionSelect.php' method='post' id='form'>";
     $sqlSubjectId = "SELECT subject_id FROM public.user_subjects WHERE user_id =".$_SESSION["userId"];
     foreach ($db->query($sqlSubjectId) as $row) {
-       $sqlSubject = "SELECT subject_name FROM public.subject WHERE id =".$row["subject_id"];
+       $sqlSubject = "SELECT * FROM public.subject WHERE id =".$row["subject_id"];
        foreach ($db->query($sqlSubject) as $column){
            echo "<div class=\"row\">";
-           echo "<div class=\"col-sm-12\" id='displayRow'><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
+           echo "<div class=\"col-sm-12\" id='displayRow'><input type='checkbox' value=".$column["id"]." name='subject[]'>".$column["subject_name"]."</div>";
+           echo $column["id"];
+           #echo "<div class=\"col-sm-12\" id='displayRow'><input type='submit' value=".$column["subject_name"]." name='subject[]'></div>";
            #echo "<div class=\"col - sm - 12\" id='displayRow'><button onclick=\"changeSubmit()\">".$column["subject_name"]."<button onclick='changeSubmit()'>hex</button></button></div>";
            echo "</div>";
         }
