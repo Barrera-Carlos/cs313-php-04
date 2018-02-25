@@ -1,6 +1,7 @@
 function submitItem() {
+    var input = document.getElementById('inputText').value;
     var textInput = document.getElementsByClassName('container');
-    if(textInput === ''){
+    if(input === ''){
         textInput.action = "/QuestionSelect.php"
     }
     else
