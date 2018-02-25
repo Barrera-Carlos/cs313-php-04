@@ -84,12 +84,11 @@ catch (PODException $ex){
             for (var i = 0; i < form.length; i++){
                 if(form.elements[i].checked){
                     itemCheck = true;
-                    alert(itemCheck);
                 }
             }
             if (itemCheck){
                 form.action = "phpQuerying.php";
-                form.click();
+                document.getElementById('submitSubject').click();
             }
 
 
@@ -104,7 +103,7 @@ catch (PODException $ex){
             }
             if (itemCheck){
                 form.action = "QuestionSelect.php";
-                form.click();
+                document.getElementById('submitSubject').click();
             }
 
         }
