@@ -86,7 +86,7 @@ catch (PODException $ex){
                 alert(form.element[0].value);
             }
             if (itemCheck)
-                form.action = "phpQuerying.php";*/
+                form.action = "phpQuerying.php";
 
         }
         function chooseItem(){
