@@ -54,7 +54,6 @@ catch (PODException $ex){
                 $size = sizeof($_POST['question']);
                 for ($x=0; $x< $size; $x++){
                     $updateQuestionString = "UPDATE public.questions SET question ='".$_POST['inputQuestion']."' WHERE id=".$_POST['question'][$x];
-                    echo $updateQuestionString."</br>";
                     $db->query($updateQuestionString);
                 }
             }
@@ -62,7 +61,6 @@ catch (PODException $ex){
                 $size = sizeof($_POST['answer']);
                 for ($x=0; $x< $size; $x++){
                     $updateAnswerString = "UPDATE public.answer SET answer ='".$_POST['inputAnswer']."' WHERE id=".$_POST['answer'][$x];
-                    echo $updateAnswerString."</br>";
                     $db->query($updateAnswerString);
                 }
             }
@@ -83,7 +81,6 @@ catch (PODException $ex){
 
             $insertQuestionId = "INSERT INTO bundle_questions(bundle_id,question_id) VALUES (".$_SESSION['bundleId'].','.$questionId.")";
             $insertAnswerId = "INSERT INTO question_answers(question_id,answer_id) VALUES (".$questionId.",".$answerId.")";
-            echo $insertAnswerId;
             $db->query($insertQuestionId);
             $db->query($insertAnswerId);
         }
