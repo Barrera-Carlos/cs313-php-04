@@ -118,7 +118,7 @@ catch (PODException $ex){
             <a class="navbar-brand" href="#">Flash Quiz</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="phpQuerying.php">logOut</a></li>
+            <li><a href="logOut.php.php">logOut</a></li>
         </ul>
     </div>
 </nav>
