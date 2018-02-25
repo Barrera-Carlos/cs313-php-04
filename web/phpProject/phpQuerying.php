@@ -109,20 +109,12 @@ catch (PODException $ex){
         }
         function logOut() {
             <?php
-            /*if (ini_get("session.use_cookies")) {
-                $params = session_get_cookie_params();
-                setcookie(session_name(), '', time() - 42000,
-                    $params["path"], $params["domain"],
-                    $params["secure"], $params["httponly"]
-                );
-            }
-
-            // Finally, destroy the session.
-            session_destroy();*/
+            unset($_SESSION["userId"]);  // where $_SESSION["nome"] is your own variable. if you do not have one use only this as follow **session_unset();**
+            header("Location: logIn.php");
             ?>
-            var form = document.getElementById('form');
+            /*var form = document.getElementById('form');
             form.action = "logIn.php";
-            document.getElementById('submitSubject').click();
+            document.getElementById('submitSubject').click();*/
         }
     </script>
 </head>
